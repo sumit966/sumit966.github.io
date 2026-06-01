@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Sumit Raj | AI/ML Engineer & DevOps Architect | 6D Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 6D Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+    
+    <!-- Animated Code Background - Full Page -->
+    <div class="code-background">
+        <div class="code-line">$ python train_model.py --epochs 100 --accuracy 0.95</div>
+        <div class="code-line">$ docker build -t sumit/ml-app .</div>
+        <div class="code-line">$ kubectl apply -f deployment.yaml</div>
+        <div class="code-line">$ gcloud compute instances create --zone=us-central1</div>
+        <div class="code-line">$ terraform plan -out=tfplan</div>
+        <div class="code-line">$ git push origin main --force</div>
+        <div class="code-line">$ npm run deploy --prod</div>
+        <div class="code-line">$ python -c "import tensorflow as tf; print(tf.__version__)"</div>
+        <div class="code-line">$ docker ps -a | grep "sumit"</div>
+        <div class="code-line">$ kubectl get pods --namespace=production</div>
+        <div class="code-line">$ ansible-playbook deploy.yml -i inventory</div>
+        <div class="code-line">$ terraform apply -auto-approve</div>
+        <div class="code-line">$ pip install -r requirements.txt</div>
+        <div class="code-line">$ python manage.py runserver</div>
+        <div class="code-line">$ docker-compose up -d</div>
+    </div>
+
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="#home">Sumit<span class="highlight">Raj</span></a>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#roles" class="nav-link">Roles</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#activities" class="nav-link">Activities</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="greeting">✨ Welcome to Developer's Universe ✨</div>
+                    <h1>Sumit<span class="highlight">Raj</span></h1>
+                    <div class="typed-container">
+                        <span class="typed-prefix">I'm a </span>
+                        <span class="typed-text"></span>
+                    </div>
+                    <p>AI/ML Engineer & DevOps Architect specializing in scalable cloud solutions, intelligent systems, and end-to-end ML pipelines. M.Tech @ VNIT Nagpur | Ex-Salesforce Intern | Founder @ Fintech IT Solutions</p>
+                    <div class="tech-stack-hero">
+                        <span>🐍 Python</span><span>☕ Java</span><span>🧠 TensorFlow</span><span>🐳 Docker</span><span>☸️ Kubernetes</span><span>☁️ GCP</span><span>⚛️ React</span><span>🟢 Node.js</span>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View Work →</a>
+                        <a href="#resumes" class="btn btn-resume"><i class="fas fa-download"></i> Download Resume</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                </div>
+                <div class="hero-stats-card">
+                    <div class="stat-item"><div class="stat-number">13+</div><div class="stat-label">Projects</div></div>
+                    <div class="stat-item"><div class="stat-number">300+</div><div class="stat-label">DSA Solved</div></div>
+                    <div class="stat-item"><div class="stat-number">5⭐</div><div class="stat-label">HackerRank</div></div>
+                    <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">Certifications</div></div>
+                    <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label">Languages</div></div>
+                    <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Roles</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resumes Section -->
+    <section id="resumes" class="resumes">
+        <div class="container">
+            <h2 class="section-title">Download <span class="highlight">My Resumes</span></h2>
+            <div class="resumes-grid">
+                <div class="resume-card" data-tilt><i class="fas fa-cloud"></i><h3>DevOps & Cloud Resume</h3><p>DevOps, Cloud Infrastructure, CI/CD, Docker, Kubernetes, GCP, Terraform</p><div class="resume-tags"><span>DevOps</span><span>Cloud</span><span>CI/CD</span><span>Docker</span><span>K8s</span></div><a href="#" class="btn-small download-resume">Download PDF <i class="fas fa-download"></i></a></div>
+                <div class="resume-card" data-tilt><i class="fas fa-brain"></i><h3>AI/ML & Data Science Resume</h3><p>AI/ML, Data Analysis, Deep Learning, Computer Vision, Python, TensorFlow</p><div class="resume-tags"><span>AI/ML</span><span>Data Science</span><span>Python</span><span>TensorFlow</span><span>CNN</span></div><a href="#" class="btn-small download-resume">Download PDF <i class="fas fa-download"></i></a></div>
+                <div class="resume-card" data-tilt><i class="fas fa-laptop-code"></i><h3>Full Stack Developer Resume</h3><p>Frontend, Backend, Databases, REST APIs, React, Node.js, MongoDB</p><div class="resume-tags"><span>React</span><span>Node.js</span><span>MongoDB</span><span>REST API</span><span>JavaScript</span></div><a href="#" class="btn-small download-resume">Download PDF <i class="fas fa-download"></i></a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About <span class="highlight">Me</span></h2>
+            <div class="about-detailed">
+                <div class="about-main-card">
+                    <div class="about-bio">
+                        <p><strong>👨‍💻 Who I Am:</strong> I'm a passionate AI/ML Engineer and DevOps Architect with expertise in building intelligent systems and scalable cloud infrastructure. Currently pursuing M.Tech in Applied AI & ML at VNIT Nagpur.</p>
+                        <p><strong>🎯 My Journey:</strong> Started with B.E. in Computer Science at Dr. DY Patil Institute (CGPA: 7.89), interned at Salesforce, and now building Fintech IT Solutions. I've solved 300+ DSA problems and hold 5-Star rating on HackerRank for Java.</p>
+                        <p><strong>💡 Technical Philosophy:</strong> I believe in clean code, automation, and continuous learning. From containerizing apps with Docker to deploying ML models on GCP.</p>
+                        <p><strong>🌟 Beyond Code:</strong> Program organizer, Rotract Club member, and coding club mentor. Organized 5+ tech events and mentored 50+ students.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roles Section -->
+    <section id="roles" class="roles">
+        <div class="container">
+            <h2 class="section-title">My <span class="highlight">Professional Roles</span></h2>
+            <div class="roles-grid">
+                <div class="role-card" data-tilt><div class="role-icon">🤖</div><h3>AI/ML Engineer</h3><p>Designing ML models for computer vision, healthcare, security. Expertise in TensorFlow, Keras, PyTorch, YOLOv8.</p><div class="role-duties"><span>Model Training</span><span>Computer Vision</span><span>Deep Learning</span></div></div>
+                <div class="role-card" data-tilt><div class="role-icon">☁️</div><h3>DevOps Architect</h3><p>Building CI/CD pipelines, containerizing apps, orchestrating microservices on Kubernetes. IaC with Terraform on GCP.</p><div class="role-duties"><span>CI/CD Pipelines</span><span>Docker/K8s</span><span>Cloud Automation</span></div></div>
+                <div class="role-card" data-tilt><div class="role-icon">📊</div><h3>Data Analyst</h3><p>Transforming raw data into insights. Expert in EDA, statistical modeling, data visualization with Python, Pandas, Power BI.</p><div class="role-duties"><span>Data Cleaning</span><span>EDA</span><span>Visualization</span></div></div>
+                <div class="role-card" data-tilt><div class="role-icon">💻</div><h3>Full Stack Developer</h3><p>Building responsive web apps with React, Node.js, MongoDB. Creating REST APIs and real-time dashboards.</p><div class="role-duties"><span>Frontend Dev</span><span>Backend APIs</span><span>Database Design</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical <span class="highlight">Skills</span></h2>
+            
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                <div class="skills-detailed">
+                    <div class="skill-detailed"><span class="skill-name">Python</span><div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div><span class="skill-percent">90%</span><div class="skill-code"><code>def predict(X): return model.predict(X)</code></div></div>
+                    <div class="skill-detailed"><span class="skill-name">Java</span><div class="skill-bar"><div class="skill-level" style="width: 88%"></div></div><span class="skill-percent">88%</span><div class="skill-code"><code>System.out.println("5-Star HackerRank");</code></div></div>
+                    <div class="skill-detailed"><span class="skill-name">C++</span><div class="skill-bar"><div class="skill-level" style="width: 80%"></div></div><span class="skill-percent">80%</span><div class="skill-code"><code>sort(arr.begin(), arr.end());</code></div></div>
+                    <div class="skill-detailed"><span class="skill-name">SQL</span><div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div><span class="skill-percent">85%</span><div class="skill-code"><code>SELECT * FROM users WHERE status='active'</code></div></div>
+                    <div class="skill-detailed"><span class="skill-name">JavaScript/TS</span><div class="skill-bar"><div class="skill-level" style="width: 78%"></div></div><span class="skill-percent">78%</span><div class="skill-code"><code>const sum = (a,b) => a + b;</code></div></div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
+                <div class="skills-detailed">
+                    <div class="skill-detailed"><span class="skill-name">TensorFlow/Keras</span><div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div><span class="skill-percent">85%</span><div class="skill-code"><code>model.add(Conv2D(32, (3,3), activation='relu'))</code></div></div>
+                    <div class="skill-detailed"><span class="skill-name">Computer Vision</span><div class="skill-bar"><div class="skill-level" style="width: 82%"></div></div><span class="skill-percent">82%</span><div class="skill-code"><code>cv2.imread(), YOLOv8.detect()</code></div></div>
+                    <div class="skill-detailed"><span class="skill-name">Data Analysis</span><div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div><span class="skill-percent">90%</span><div class="skill-code"><code>df.groupby('category').mean()</code></div></div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-cloud"></i> DevOps & Cloud</h3>
+                <div class="skills-detailed">
+                    <div class="skill-detailed"><span class="skill-name">Docker</span><div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div><span class="skill-percent">85%</span><div class="skill-code"><code>docker build -t app .</code></div></div>
+                    <div class="skill-detailed"><span class="skill-name">Kubernetes</span><div class="skill-bar"><div class="skill-level" style="width: 72%"></div></div><span class="skill-percent">72%</span><div class="skill-code"><code>kubectl apply -f deployment.yaml</code></div></div>
+                    <div class="skill-detailed"><span class="skill-name">Terraform</span><div class="skill-bar"><div class="skill-level" style="width: 68%"></div></div><span class="skill-percent">68%</span><div class="skill-code"><code>resource "google_compute_instance" "vm" {}</code></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section - Clickable Cards -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">All <span class="highlight">13 Projects</span></h2>
+            <div class="projects-grid">
+                <div class="project-detailed-card" data-project="1">
+                    <div class="project-header"><div class="project-icon">🔐</div><div><h3>Military Security System</h3><div class="project-tech-badges"><span>Python</span><span>YOLOv8</span><span>OpenCV</span></div></div></div>
+                    <p>Real-time surveillance system with face recognition and vehicle detection for military zones.</p>
+                    <button class="btn-small view-project">View Details →</button>
+                </div>
+                <div class="project-detailed-card" data-project="2">
+                    <div class="project-header"><div class="project-icon">🧠</div><div><h3>Brain Tumor Detection</h3><div class="project-tech-badges"><span>TensorFlow</span><span>Keras</span><span>CNN</span></div></div></div>
+                    <p>CNN-based MRI classification for brain tumor detection with 95% accuracy.</p>
+                    <button class="btn-small view-project">View Details →</button>
+                </div>
+                <div class="project-detailed-card" data-project="3">
+                    <div class="project-header"><div class="project-icon">🤖</div><div><h3>Mobile Botnet Detection</h3><div class="project-tech-badges"><span>Python</span><span>SVM</span><span>SQLite</span></div></div></div>
+                    <p>Android malware detection system identifying botnet communication with 92% accuracy.</p>
+                    <button class="btn-small view-project">View Details →</button>
+                </div>
+                <div class="project-detailed-card" data-project="4">
+                    <div class="project-header"><div class="project-icon">⚙️</div><div><h3>CI/CD Pipeline with Docker & GCP</h3><div class="project-tech-badges"><span>GitHub Actions</span><span>Docker</span><span>GCP</span></div></div></div>
+                    <p>Automated build and deployment pipeline for containerized applications.</p>
+                    <button class="btn-small view-project">View Details →</button>
+                </div>
+                <div class="project-detailed-card" data-project="5">
+                    <div class="project-header"><div class="project-icon">📊</div><div><h3>MLOps Pipeline with MLflow</h3><div class="project-tech-badges"><span>MLflow</span><span>FastAPI</span><span>Docker</span></div></div></div>
+                    <p>End-to-end MLOps pipeline for model training, versioning, and deployment.</p>
+                    <button class="btn-small view-project">View Details →</button>
+                </div>
+                <div class="project-detailed-card" data-project="6">
+                    <div class="project-header"><div class="project-icon">📈</div><div><h3>Real-Time Dashboard</h3><div class="project-tech-badges"><span>React</span><span>Node.js</span><span>Socket.io</span></div></div></div>
+                    <p>Real-time analytics dashboard with live data visualization.</p>
+                    <button class="btn-small view-project">View Details →</button>
+                </div>
+                <div class="project-detailed-card" data-project="7">
+                    <div class="project-header"><div class="project-icon">☸️</div><div><h3>Kubernetes Cluster Deployment</h3><div class="project-tech-badges"><span>K8s</span><span>Docker</span><span>GKE</span></div></div></div>
+                    <p>Deployed and managed containerized applications on GKE cluster.</p>
+                    <button class="btn-small view-project">View Details →</button>
+                </div>
+                <div class="project-detailed-card" data-project="8">
+                    <div class="project-header"><div class="project-icon">🏗️</div><div><h3>Terraform Infrastructure as Code</h3><div class="project-tech-badges"><span>Terraform</span><span>GCP</span><span>HCL</span></div></div></div>
+                    <p>Automated GCP infrastructure provisioning with Terraform.</p>
+                    <button class="btn-small view-project">View Details →</button>
+                </div>
+                <div class="project-detailed-card" data-project="9">
+                    <div class="project-header"><div class="project-icon">🔗</div><div><h3>URL Shortener with Analytics</h3><div class="project-tech-badges"><span>Node.js</span><span>MongoDB</span><span>Redis</span></div></div></div>
+                    <p>High-performance URL shortening service with click analytics.</p>
+                    <button class="btn-small view-project">View Details →</button>
+                </div>
+                <div class="project-detailed-card" data-project="10">
+                    <div class="project-header"><div class="project-icon">📈</div><div><h3>Fintech IT Solutions Platform</h3><div class="project-tech-badges"><span>React</span><span>Node.js</span><span>AWS</span></div></div></div>
+                    <p>SaaS platform helping startups launch MVPs quickly.</p>
+                    <button class="btn-small view-project">View Details →</button>
+                </div>
+                <div class="project-detailed-card" data-project="11">
+                    <div class="project-header"><div class="project-icon">💬</div><div><h3>NLP Sentiment Analysis</h3><div class="project-tech-badges"><span>Python</span><span>NLTK</span><span>Transformers</span></div></div></div>
+                    <p>Sentiment analysis model for customer reviews using BERT transformer.</p>
+                    <button class="btn-small view-project">View Details →</button>
+                </div>
+                <div class="project-detailed-card" data-project="12">
+                    <div class="project-header"><div class="project-icon">🔄</div><div><h3>ETL Data Pipeline</h3><div class="project-tech-badges"><span>Python</span><span>Apache Airflow</span><span>PostgreSQL</span></div></div></div>
+                    <p>Automated ETL pipeline for processing large-scale data batches.</p>
+                    <button class="btn-small view-project">View Details →</button>
+                </div>
+                <div class="project-detailed-card" data-project="13">
+                    <div class="project-header"><div class="project-icon">🤖</div><div><h3>Customer Support Chatbot</h3><div class="project-tech-badges"><span>Python</span><span>Rasa</span><span>Docker</span></div></div></div>
+                    <p>AI-powered chatbot for customer support automation.</p>
+                    <button class="btn-small view-project">View Details →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Work <span class="highlight">Experience</span></h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header"><div class="company-logo">🏢</div><div><h3>Software Engineer Intern</h3><h4>Salesforce</h4><div class="timeline-date">Feb 2022 - May 2022</div></div></div>
+                        <ul><li>Developed backend workflows reducing manual effort by 40%</li><li>Built bulk data processing pipelines and integrations</li><li>Implemented secure data management practices</li><li>Wrote optimized SQL queries for business analytics</li></ul>
+                        <div class="tech-used"><span>Java</span><span>SQL</span><span>Salesforce</span><span>REST APIs</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header"><div class="company-logo">🚀</div><div><h3>Founder & Technical Lead</h3><h4>Fintech IT Solutions</h4><div class="timeline-date">Jan 2024 - Present</div></div></div>
+                        <ul><li>Building SaaS platform helping startups launch MVPs quickly</li><li>Successfully delivered 3 MVP projects for early-stage startups</li><li>Implementing CI/CD pipelines and cloud infrastructure</li></ul>
+                        <div class="tech-used"><span>React</span><span>Node.js</span><span>AWS</span><span>Docker</span><span>PostgreSQL</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section - NEW with ALL Activities -->
+    <section id="activities" class="activities">
+        <div class="container">
+            <h2 class="section-title">Extra Curricular <span class="highlight">Activities</span></h2>
+            <div class="activities-grid">
+                <div class="activity-card" data-tilt><div class="activity-icon">🎯</div><h3>Program Organizer</h3><p>Dr. DY Patil Institute of Technology, Pune</p><span>Organized 5+ technical events, hackathons, and coding competitions. Coordinated with 100+ participants and managed event logistics successfully.</span><div class="activity-tags"><span>Leadership</span><span>Event Management</span><span>Team Coordination</span></div></div>
+                <div class="activity-card" data-tilt><div class="activity-icon">🔄</div><h3>Rotract Club Member</h3><p>Rotract Club of Pune</p><span>Active member contributing to community service initiatives, blood donation camps, and educational awareness programs for underprivileged students.</span><div class="activity-tags"><span>Community Service</span><span>Social Impact</span><span>Team Work</span></div></div>
+                <div class="activity-card" data-tilt><div class="activity-icon">💻</div><h3>Coding Club Coordinator</h3><p>College Coding Club</p><span>Led weekly coding sessions, mentored 50+ juniors in DSA and competitive programming. Organized intra-college coding competitions.</span><div class="activity-tags"><span>Mentorship</span><span>DSA</span><span>Competitive Programming</span></div></div>
+                <div class="activity-card" data-tilt><div class="activity-icon">🏆</div><h3>Hackathon Participant</h3><p>Multiple Events</p><span>Participated in 5+ hackathons including Smart India Hackathon. Built innovative solutions for real-world problems.</span><div class="activity-tags"><span>Innovation</span><span>Problem Solving</span><span>Team Work</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education & <span class="highlight">Certifications</span></h2>
+            <div class="edu-cert-grid">
+                <div class="edu-card"><div class="edu-year">2024-Present</div><h3>M.Tech Applied AI & ML</h3><p>VNIT Nagpur | CGPA: 8.2</p><p class="edu-courses">Courses: Deep Learning, Computer Vision, NLP, Reinforcement Learning</p></div>
+                <div class="edu-card"><div class="edu-year">2019-2023</div><h3>B.E. Computer Science</h3><p>Dr. DY Patil Institute | CGPA: 7.89</p><p class="edu-courses">Specialization: Cloud Computing & DevOps, Data Science</p></div>
+                <div class="edu-card"><div class="edu-year">2017-2019</div><h3>Higher Secondary (12th)</h3><p>CBSE Board | Percentage: 85.6%</p><p class="edu-courses">Subjects: PCM with Computer Science</p></div>
+            </div>
+            <div class="certs-grid">
+                <div class="cert-card"><i class="fab fa-google"></i><h4>Google Cloud Fundamentals</h4></div>
+                <div class="cert-card"><i class="fas fa-lock"></i><h4>Cloud Security Certification</h4></div>
+                <div class="cert-card"><i class="fab fa-microsoft"></i><h4>Threat Modeling</h4></div>
+                <div class="cert-card"><i class="fas fa-code"></i><h4>5-Star Java HackerRank</h4></div>
+                <div class="cert-card"><i class="fab fa-docker"></i><h4>Docker Essentials</h4></div>
+                <div class="cert-card"><i class="fas fa-cloud"></i><h4>Cloud Architecture</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Section - Clean Design -->
+    <section class="github-section">
+        <div class="container">
+            <h2 class="section-title">GitHub <span class="highlight">Activity</span></h2>
+            <div class="github-repos" id="github-repos"><p>Loading repositories...</p></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's <span class="highlight">Connect</span></h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-card"><i class="fas fa-envelope"></i><h4>Email</h4><p>info.sr0909@gmail.com</p></div>
+                    <div class="contact-card"><i class="fas fa-phone"></i><h4>Phone</h4><p>+91 9472441137</p></div>
+                    <div class="contact-card"><i class="fab fa-github"></i><h4>GitHub</h4><p>github.com/sumit966</p></div>
+                    <div class="contact-card"><i class="fab fa-linkedin"></i><h4>LinkedIn</h4><p>linkedin.com/in/sumit-raj</p></div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn-submit">Send Message →</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Sumit Raj | AI/ML Engineer & DevOps Architect | 13 Projects | 300+ DSA | 5-Star Java</p>
+            <p class="footer-tags">🐍 Python | ☕ Java | 🧠 TensorFlow | 🐳 Docker | ☸️ Kubernetes | ☁️ GCP | ⚛️ React | 🟢 Node.js</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
