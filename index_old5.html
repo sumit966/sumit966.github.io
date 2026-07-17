@@ -1,0 +1,470 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumit Raj | AI-Powered Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- AI Particle Background -->
+    <canvas id="ai-canvas"></canvas>
+    
+    <!-- Floating AI Elements -->
+    <div class="ai-floating-elements">
+        <div class="ai-float" style="--delay:0s; --x:5%; --y:10%;">🧠</div>
+        <div class="ai-float" style="--delay:1s; --x:90%; --y:15%;">🤖</div>
+        <div class="ai-float" style="--delay:2s; --x:8%; --y:70%;">⚡</div>
+        <div class="ai-float" style="--delay:3s; --x:85%; --y:80%;">🚀</div>
+        <div class="ai-float" style="--delay:0.5s; --x:45%; --y:5%;">💻</div>
+        <div class="ai-float" style="--delay:1.5s; --x:15%; --y:45%;">☁️</div>
+        <div class="ai-float" style="--delay:2.5s; --x:75%; --y:50%;">🔐</div>
+        <div class="ai-float" style="--delay:3.5s; --x:50%; --y:92%;">📊</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="#home">Sumit<span class="highlight">Raj</span></a>
+                <span class="ai-badge">⚡ AI-Powered</span>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#roles" class="nav-link">Roles</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#resumes" class="nav-link">Resumes</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================
+    HOME SECTION - AI Interactive
+    ======================================== -->
+    <section id="home" class="home-section">
+        <div class="container">
+            <div class="home-content">
+                <div class="home-text">
+                    <div class="ai-intro">🤖 AI-Powered Developer</div>
+                    <h1>Sumit <span class="highlight">Raj</span></h1>
+                    <div class="home-role">
+                        <span class="role-highlight">7+</span> Professional Roles | 
+                        <span class="role-highlight">13+</span> Projects | 
+                        <span class="role-highlight">300+</span> DSA
+                    </div>
+                    <div class="home-typed-container">
+                        <span class="typed-prefix">I am a </span>
+                        <span class="typed-text"></span>
+                    </div>
+                    <p class="home-desc">M.Tech in Applied AI & ML @ VNIT Nagpur | Ex-Salesforce Intern | Founder @ Fintech IT Solutions</p>
+                    
+                    <div class="home-ai-stats">
+                        <div class="ai-stat" data-count="13"><span>0</span><label>Projects</label></div>
+                        <div class="ai-stat" data-count="300"><span>0</span><label>DSA Solved</label></div>
+                        <div class="ai-stat" data-count="7"><span>0</span><label>Roles</label></div>
+                        <div class="ai-stat" data-count="5"><span>0</span><label>⭐ HackerRank</label></div>
+                    </div>
+
+                    <div class="home-buttons">
+                        <a href="#roles" class="btn-primary">Explore Roles →</a>
+                        <a href="#resumes" class="btn-secondary">Download Resumes</a>
+                        <a href="#contact" class="btn-secondary">Let's Connect</a>
+                    </div>
+
+                    <div class="home-social">
+                        <a href="https://github.com/sumit966"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/sumit-raj-a11aa3193"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:info.sr0909@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://www.hackerrank.com/profile/sumit966"><i class="fab fa-hackerrank"></i></a>
+                    </div>
+                </div>
+                <div class="home-3d">
+                    <div class="ai-orb">
+                        <div class="orb-core"></div>
+                        <div class="orb-ring ring-1"></div>
+                        <div class="orb-ring ring-2"></div>
+                        <div class="orb-ring ring-3"></div>
+                        <div class="orb-emoji">🧠</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    ROLES SECTION - 7 Interactive Role Cards
+    ======================================== -->
+    <section id="roles" class="roles-section">
+        <div class="container">
+            <h2 class="section-title">My <span class="highlight">7 Professional Roles</span></h2>
+            <div class="roles-grid">
+                <div class="role-card" data-role="ai-ml">
+                    <div class="role-icon">🤖</div>
+                    <h3>AI/ML Engineer</h3>
+                    <p>TensorFlow, Keras, PyTorch, CNN, RNN, LSTM, YOLOv8</p>
+                    <div class="role-tech"><span>Python</span><span>TensorFlow</span><span>CV</span></div>
+                    <div class="role-progress"><div class="role-progress-bar" style="width:0%"></div></div>
+                    <span class="role-percent">92%</span>
+                    <button class="role-select">View Resume →</button>
+                </div>
+                <div class="role-card" data-role="backend">
+                    <div class="role-icon">⚙️</div>
+                    <h3>Backend Developer</h3>
+                    <p>Spring Boot, Flask, Django, Node.js, REST APIs, SQL</p>
+                    <div class="role-tech"><span>Java</span><span>Python</span><span>SQL</span></div>
+                    <div class="role-progress"><div class="role-progress-bar" style="width:0%"></div></div>
+                    <span class="role-percent">88%</span>
+                    <button class="role-select">View Resume →</button>
+                </div>
+                <div class="role-card" data-role="data-analyst">
+                    <div class="role-icon">📊</div>
+                    <h3>Data Analyst</h3>
+                    <p>SQL, Power BI, Tableau, Python, Pandas, Excel, Statistics</p>
+                    <div class="role-tech"><span>SQL</span><span>Power BI</span><span>Pandas</span></div>
+                    <div class="role-progress"><div class="role-progress-bar" style="width:0%"></div></div>
+                    <span class="role-percent">90%</span>
+                    <button class="role-select">View Resume →</button>
+                </div>
+                <div class="role-card" data-role="data-scientist">
+                    <div class="role-icon">📈</div>
+                    <h3>Data Scientist</h3>
+                    <p>ML/DL, Scikit-learn, XGBoost, Regression, Classification</p>
+                    <div class="role-tech"><span>Python</span><span>ML</span><span>DL</span></div>
+                    <div class="role-progress"><div class="role-progress-bar" style="width:0%"></div></div>
+                    <span class="role-percent">87%</span>
+                    <button class="role-select">View Resume →</button>
+                </div>
+                <div class="role-card" data-role="fullstack">
+                    <div class="role-icon">💻</div>
+                    <h3>Full Stack Developer</h3>
+                    <p>React, Node.js, Express, MongoDB, PostgreSQL, Docker</p>
+                    <div class="role-tech"><span>React</span><span>Node.js</span><span>MongoDB</span></div>
+                    <div class="role-progress"><div class="role-progress-bar" style="width:0%"></div></div>
+                    <span class="role-percent">85%</span>
+                    <button class="role-select">View Resume →</button>
+                </div>
+                <div class="role-card" data-role="mlops">
+                    <div class="role-icon">☁️</div>
+                    <h3>MLOps/DevOps</h3>
+                    <p>GCP, Docker, Kubernetes, Terraform, CI/CD, MLflow</p>
+                    <div class="role-tech"><span>GCP</span><span>Docker</span><span>K8s</span></div>
+                    <div class="role-progress"><div class="role-progress-bar" style="width:0%"></div></div>
+                    <span class="role-percent">80%</span>
+                    <button class="role-select">View Resume →</button>
+                </div>
+                <div class="role-card" data-role="data-validation">
+                    <div class="role-icon">✅</div>
+                    <h3>Data Validation & Compliance</h3>
+                    <p>KYC, AML, CDD, Data Quality, Risk Assessment, Compliance</p>
+                    <div class="role-tech"><span>KYC</span><span>AML</span><span>Compliance</span></div>
+                    <div class="role-progress"><div class="role-progress-bar" style="width:0%"></div></div>
+                    <span class="role-percent">85%</span>
+                    <button class="role-select">View Resume →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    ROLE DETAIL MODAL - Shows when role clicked
+    ======================================== -->
+    <div id="roleModal" class="role-modal">
+        <div class="role-modal-content">
+            <span class="role-modal-close">&times;</span>
+            <div id="roleModalBody"></div>
+        </div>
+    </div>
+
+    <!-- ========================================
+    SKILLS SECTION - Animated Skills
+    ======================================== -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Technical <span class="highlight">Skills</span></h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skill-items">
+                        <div class="skill-item"><span>Python</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">90%</span></div>
+                        <div class="skill-item"><span>Java</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">88%</span></div>
+                        <div class="skill-item"><span>C++</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">80%</span></div>
+                        <div class="skill-item"><span>SQL</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">85%</span></div>
+                        <div class="skill-item"><span>JavaScript/TypeScript</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">78%</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
+                    <div class="skill-items">
+                        <div class="skill-item"><span>TensorFlow/Keras</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">85%</span></div>
+                        <div class="skill-item"><span>Computer Vision</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">82%</span></div>
+                        <div class="skill-item"><span>Scikit-learn</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">85%</span></div>
+                        <div class="skill-item"><span>Data Analysis</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">90%</span></div>
+                        <div class="skill-item"><span>NLP/Transformers</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">70%</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-cloud"></i> DevOps & Cloud</h3>
+                    <div class="skill-items">
+                        <div class="skill-item"><span>Docker</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">85%</span></div>
+                        <div class="skill-item"><span>Kubernetes</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">72%</span></div>
+                        <div class="skill-item"><span>GCP</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">80%</span></div>
+                        <div class="skill-item"><span>Terraform</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">68%</span></div>
+                        <div class="skill-item"><span>CI/CD</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">85%</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Frontend & Backend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item"><span>React.js</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">78%</span></div>
+                        <div class="skill-item"><span>Node.js/Express</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">80%</span></div>
+                        <div class="skill-item"><span>Spring Boot</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">70%</span></div>
+                        <div class="skill-item"><span>MongoDB/PostgreSQL</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">85%</span></div>
+                        <div class="skill-item"><span>REST APIs</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">90%</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-bar"></i> Data Science & Analytics</h3>
+                    <div class="skill-items">
+                        <div class="skill-item"><span>Pandas/NumPy</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">90%</span></div>
+                        <div class="skill-item"><span>Power BI/Tableau</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">85%</span></div>
+                        <div class="skill-item"><span>Statistical Modeling</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">80%</span></div>
+                        <div class="skill-item"><span>EDA/Visualization</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">90%</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> MLOps & Tools</h3>
+                    <div class="skill-items">
+                        <div class="skill-item"><span>MLflow</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">70%</span></div>
+                        <div class="skill-item"><span>Git/GitHub</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">90%</span></div>
+                        <div class="skill-item"><span>Docker Compose</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">80%</span></div>
+                        <div class="skill-item"><span>Postman/Swagger</span><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span class="skill-pct">85%</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    PROJECTS SECTION - 13 Projects
+    ======================================== -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">All <span class="highlight">13 Projects</span></h2>
+            <div class="projects-grid" id="projectsGrid"></div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    EXPERIENCE SECTION
+    ======================================== -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <h2 class="section-title">Work <span class="highlight">Experience</span></h2>
+            <div class="experience-timeline" id="experienceTimeline">
+                <div class="exp-item">
+                    <div class="exp-year">2022</div>
+                    <div class="exp-card">
+                        <div class="exp-icon">🏢</div>
+                        <div class="exp-content">
+                            <h3>Software Engineer Intern</h3>
+                            <h4>Salesforce</h4>
+                            <p class="exp-duration">Feb 2022 - May 2022</p>
+                            <ul>
+                                <li>Designed and deployed bulk data pipelines reducing manual effort by 40%</li>
+                                <li>Optimized backend workflows and integrated Salesforce APIs</li>
+                                <li>Built secure data management modules with OOP principles</li>
+                                <li>Wrote complex SQL queries for business analytics</li>
+                                <li>Analyzed 10,000+ CRM records and built Power BI dashboards</li>
+                            </ul>
+                            <div class="exp-tags"><span>Java</span><span>SQL</span><span>Salesforce</span><span>Power BI</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="exp-item">
+                    <div class="exp-year">2024</div>
+                    <div class="exp-card">
+                        <div class="exp-icon">🚀</div>
+                        <div class="exp-content">
+                            <h3>Founder & Technical Lead</h3>
+                            <h4>Fintech IT Solutions</h4>
+                            <p class="exp-duration">Jan 2024 - Present</p>
+                            <ul>
+                                <li>Building SaaS platform helping startups launch MVPs quickly</li>
+                                <li>Successfully delivered 3 MVP projects for early-stage startups</li>
+                                <li>Implementing CI/CD pipelines and cloud infrastructure</li>
+                            </ul>
+                            <div class="exp-tags"><span>React</span><span>Node.js</span><span>AWS</span><span>Docker</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    RESUMES SECTION - 7 Resumes with AI Download
+    ======================================== -->
+    <section id="resumes" class="resumes-section">
+        <div class="container">
+            <h2 class="section-title">Download <span class="highlight">Resumes</span></h2>
+            <p class="resumes-subtitle">Select your role to download the matching resume 📄</p>
+            <div class="resumes-grid">
+                <div class="resume-card" data-role="AI/ML Engineer">
+                    <div class="resume-icon">🤖</div>
+                    <h3>AI/ML Engineer</h3>
+                    <div class="resume-details">
+                        <span>TensorFlow</span><span>Keras</span><span>PyTorch</span><span>CV</span>
+                    </div>
+                    <a href="#" class="btn-download" data-resume="ai-ml">📥 Download</a>
+                </div>
+                <div class="resume-card" data-role="Backend Developer">
+                    <div class="resume-icon">⚙️</div>
+                    <h3>Backend Developer</h3>
+                    <div class="resume-details">
+                        <span>Spring Boot</span><span>Flask</span><span>Node.js</span><span>SQL</span>
+                    </div>
+                    <a href="#" class="btn-download" data-resume="backend">📥 Download</a>
+                </div>
+                <div class="resume-card" data-role="Data Analyst">
+                    <div class="resume-icon">📊</div>
+                    <h3>Data Analyst</h3>
+                    <div class="resume-details">
+                        <span>Power BI</span><span>Tableau</span><span>SQL</span><span>Excel</span>
+                    </div>
+                    <a href="#" class="btn-download" data-resume="data-analyst">📥 Download</a>
+                </div>
+                <div class="resume-card" data-role="Data Scientist">
+                    <div class="resume-icon">📈</div>
+                    <h3>Data Scientist</h3>
+                    <div class="resume-details">
+                        <span>Python</span><span>ML</span><span>DL</span><span>Statistics</span>
+                    </div>
+                    <a href="#" class="btn-download" data-resume="data-scientist">📥 Download</a>
+                </div>
+                <div class="resume-card" data-role="Full Stack Developer">
+                    <div class="resume-icon">💻</div>
+                    <h3>Full Stack Developer</h3>
+                    <div class="resume-details">
+                        <span>React</span><span>Node.js</span><span>MongoDB</span><span>AWS</span>
+                    </div>
+                    <a href="#" class="btn-download" data-resume="fullstack">📥 Download</a>
+                </div>
+                <div class="resume-card" data-role="MLOps/DevOps">
+                    <div class="resume-icon">☁️</div>
+                    <h3>MLOps/DevOps Engineer</h3>
+                    <div class="resume-details">
+                        <span>GCP</span><span>Docker</span><span>K8s</span><span>Terraform</span>
+                    </div>
+                    <a href="#" class="btn-download" data-resume="mlops">📥 Download</a>
+                </div>
+                <div class="resume-card" data-role="Data Validation">
+                    <div class="resume-icon">✅</div>
+                    <h3>Data Validation</h3>
+                    <div class="resume-details">
+                        <span>KYC</span><span>AML</span><span>CDD</span><span>Compliance</span>
+                    </div>
+                    <a href="#" class="btn-download" data-resume="data-validation">📥 Download</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    EDUCATION SECTION
+    ======================================== -->
+    <section id="education" class="education-section">
+        <div class="container">
+            <h2 class="section-title">Education & <span class="highlight">Certifications</span></h2>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <div class="edu-year">2024-2026</div>
+                    <div class="edu-icon">🎓</div>
+                    <h3>M.Tech Applied AI & ML</h3>
+                    <p>VNIT Nagpur</p>
+                    <span class="edu-grade">CGPA: 8.2/10</span>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-year">2019-2023</div>
+                    <div class="edu-icon">📘</div>
+                    <h3>B.E. Computer Science</h3>
+                    <p>Dr. DY Patil Institute</p>
+                    <span class="edu-grade">CGPA: 7.89/10</span>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-year">2017-2019</div>
+                    <div class="edu-icon">🏫</div>
+                    <h3>Higher Secondary (12th)</h3>
+                    <p>CBSE Board</p>
+                    <span class="edu-grade">85.6%</span>
+                </div>
+            </div>
+            <div class="certifications-grid">
+                <div class="cert-card"><i class="fab fa-google"></i><h4>Google Cloud</h4><span>Fundamentals</span></div>
+                <div class="cert-card"><i class="fas fa-lock"></i><h4>Cloud Security</h4><span>Google Cloud</span></div>
+                <div class="cert-card"><i class="fab fa-microsoft"></i><h4>Threat Modeling</h4><span>Microsoft</span></div>
+                <div class="cert-card"><i class="fas fa-code"></i><h4>5-Star Java</h4><span>HackerRank</span></div>
+                <div class="cert-card"><i class="fab fa-docker"></i><h4>Docker Essentials</h4><span>IBM</span></div>
+                <div class="cert-card"><i class="fas fa-chart-line"></i><h4>Power BI</h4><span>PL-300</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    GITHUB SECTION
+    ======================================== -->
+    <section class="github-section">
+        <div class="container">
+            <h2 class="section-title">GitHub <span class="highlight">Activity</span></h2>
+            <div class="github-repos" id="github-repos"></div>
+        </div>
+    </section>
+
+    <!-- ========================================
+    CONTACT SECTION
+    ======================================== -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Let's <span class="highlight">Connect</span></h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-card"><i class="fas fa-envelope"></i><h4>Email</h4><p>info.sr0909@gmail.com</p></div>
+                    <div class="contact-card"><i class="fas fa-phone"></i><h4>Phone</h4><p>+91 9472441137</p></div>
+                    <div class="contact-card"><i class="fab fa-github"></i><h4>GitHub</h4><p>github.com/sumit966</p></div>
+                    <div class="contact-card"><i class="fab fa-linkedin"></i><h4>LinkedIn</h4><p>linkedin.com/in/sumit-raj</p></div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn-submit">Send Message <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Sumit Raj | AI/ML Engineer & Full Stack Developer</p>
+            <div class="footer-tech">
+                <span>🐍 Python</span><span>☕ Java</span><span>🧠 TensorFlow</span><span>🐳 Docker</span>
+                <span>☸️ Kubernetes</span><span>☁️ GCP</span><span>⚛️ React</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.0/dist/vanilla-tilt.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
