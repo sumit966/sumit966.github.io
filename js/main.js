@@ -1,5 +1,23 @@
 ﻿// ========================================
-// CINEMATIC INTRO - FIXED
+// STATE
+// ========================================
+let currentRole = 'ai-ml';
+let currentFilter = 'all';
+let searchQuery = '';
+
+// ========================================
+// CURSOR GLOW
+// ========================================
+const cursorGlow = document.querySelector('.cursor-glow');
+document.addEventListener('mousemove', (e) => {
+  if (cursorGlow) {
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top = e.clientY + 'px';
+  }
+});
+
+// ========================================
+// INTRO
 // ========================================
 let currentScene = 0;
 const totalScenes = 5;
@@ -15,21 +33,11 @@ function goToScene(index) {
   dots.forEach((d, i) => d.classList.toggle('active', i === index));
   currentScene = index;
 }
-
 function nextScene() {
-  if (currentScene < totalScenes - 1) {
-    goToScene(currentScene + 1);
-  } else {
-    clearInterval(introInterval);
-  }
+  if (currentScene < totalScenes - 1) goToScene(currentScene + 1);
+  else clearInterval(introInterval);
 }
-
-// Auto-play
-setTimeout(() => {
-  introInterval = setInterval(nextScene, 3500);
-}, 1000);
-
-// Dots click
+setTimeout(() => { introInterval = setInterval(nextScene, 3500); }, 1000);
 dots.forEach((dot, index) => {
   dot.addEventListener('click', () => {
     clearInterval(introInterval);
@@ -37,42 +45,12 @@ dots.forEach((dot, index) => {
     introInterval = setInterval(nextScene, 3500);
   });
 });
-
-// Skip button
 skipBtn.addEventListener('click', () => {
   clearInterval(introInterval);
   goToScene(totalScenes - 1);
   setTimeout(enterPortfolio, 800);
 });
-
-// Enter button
 enterBtn.addEventListener('click', enterPortfolio);
-
-// Click on final scene to enter
-document.addEventListener('click', (e) => {
-  if (currentScene === totalScenes - 1) {
-    const final = scenes[totalScenes - 1];
-    if (final.contains(e.target) && e.target !== enterBtn) {
-      enterPortfolio();
-    }
-  }
-});
-
-// Keyboard
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-    clearInterval(introInterval);
-    if (currentScene < totalScenes - 1) {
-      goToScene(currentScene + 1);
-      introInterval = setInterval(nextScene, 3500);
-    }
-  } else if (e.key === ' ' || e.key === 'Enter') {
-    if (currentScene === totalScenes - 1) {
-      e.preventDefault();
-      enterPortfolio();
-    }
-  }
-});
 
 function enterPortfolio() {
   clearInterval(introInterval);
@@ -82,464 +60,422 @@ function enterPortfolio() {
 }
 
 // ========================================
-// INTRO NEURAL NETWORK
+// INTRO NEURAL
 // ========================================
-let introNeuralScene, introNeuralCamera, introNeuralRenderer;
-let introNeuralNodes = [], introNeuralEdges = [];
-
+let neuralScene, neuralCamera, neuralRenderer;
+let neuralNodes = [], neuralEdges = [];
 function initIntroNeural() {
   const canvas = document.getElementById('introNeuralCanvas');
-  if (!canvas || introNeuralScene) return;
-  
+  if (!canvas || neuralScene) return;
   const container = canvas.parentElement;
   const width = container.clientWidth || window.innerWidth;
   const height = container.clientHeight || window.innerHeight;
-  
-  introNeuralScene = new THREE.Scene();
-  introNeuralCamera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
-  introNeuralRenderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  introNeuralRenderer.setSize(width, height);
-  introNeuralRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  introNeuralCamera.position.z = 15;
-  
+  neuralScene = new THREE.Scene();
+  neuralCamera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
+  neuralRenderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  neuralRenderer.setSize(width, height);
+  neuralRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  neuralCamera.position.z = 15;
   const nodePositions = [];
   for (let i = 0; i < 30; i++) {
     const x = (Math.random() - 0.5) * 20;
     const y = (Math.random() - 0.5) * 15;
     const z = (Math.random() - 0.5) * 10;
-    nodePositions.push({x, y, z});
-    const geometry = new THREE.SphereGeometry(0.15 + Math.random() * 0.2, 12, 12);
-    const material = new THREE.MeshStandardMaterial({
-      color: new THREE.Color().setHSL(0.5 + Math.random() * 0.2, 0.8, 0.6),
-      emissive: new THREE.Color().setHSL(0.5 + Math.random() * 0.2, 0.8, 0.3),
+    nodePositions.push({ x, y, z });
+    const geo = new THREE.SphereGeometry(0.15 + Math.random() * 0.2, 12, 12);
+    const mat = new THREE.MeshStandardMaterial({
+      color: new THREE.Color().setHSL(0.6, 0.8, 0.6),
+      emissive: new THREE.Color().setHSL(0.6, 0.8, 0.3),
       emissiveIntensity: 0.5
     });
-    const sphere = new THREE.Mesh(geometry, material);
+    const sphere = new THREE.Mesh(geo, mat);
     sphere.position.set(x, y, z);
-    introNeuralScene.add(sphere);
-    introNeuralNodes.push(sphere);
+    neuralScene.add(sphere);
+    neuralNodes.push(sphere);
   }
-  
   for (let i = 0; i < 80; i++) {
     const a = Math.floor(Math.random() * nodePositions.length);
     let b = Math.floor(Math.random() * nodePositions.length);
     while (b === a) b = Math.floor(Math.random() * nodePositions.length);
-    const start = nodePositions[a];
-    const end = nodePositions[b];
-    const points = [
-      new THREE.Vector3(start.x, start.y, start.z),
-      new THREE.Vector3(end.x, end.y, end.z)
-    ];
-    const geometry = new THREE.BufferGeometry().setFromPoints(points);
-    const material = new THREE.LineBasicMaterial({
-      color: new THREE.Color().setHSL(0.5 + Math.random() * 0.2, 0.8, 0.5),
-      transparent: true,
-      opacity: 0.3 + Math.random() * 0.3
-    });
-    const line = new THREE.Line(geometry, material);
-    introNeuralScene.add(line);
-    introNeuralEdges.push(line);
+    const pts = [new THREE.Vector3(nodePositions[a].x, nodePositions[a].y, nodePositions[a].z), new THREE.Vector3(nodePositions[b].x, nodePositions[b].y, nodePositions[b].z)];
+    const geo = new THREE.BufferGeometry().setFromPoints(pts);
+    const mat = new THREE.LineBasicMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.3 });
+    const line = new THREE.Line(geo, mat);
+    neuralScene.add(line);
+    neuralEdges.push(line);
   }
-  
-  const light = new THREE.PointLight(0x06b6d4, 1);
-  light.position.set(10, 10, 10);
-  introNeuralScene.add(light);
-  const ambientLight = new THREE.AmbientLight(0x404060);
-  introNeuralScene.add(ambientLight);
-  
-  let neuralTime = 0;
-  function animateIntroNeural() {
+  neuralScene.add(new THREE.PointLight(0x3b82f6, 1));
+  neuralScene.add(new THREE.AmbientLight(0x404060));
+  let t = 0;
+  function animate() {
     if (!document.getElementById('introNeuralCanvas')) return;
-    requestAnimationFrame(animateIntroNeural);
-    neuralTime += 0.01;
-    introNeuralNodes.forEach((node, i) => {
-      const speed = 0.5 + (i % 3) * 0.3;
-      node.position.x += Math.sin(neuralTime * speed + i) * 0.005;
-      node.position.y += Math.cos(neuralTime * speed * 0.7 + i * 0.5) * 0.005;
-      const scale = 1 + Math.sin(neuralTime * 2 + i) * 0.2;
-      node.scale.set(scale, scale, scale);
+    requestAnimationFrame(animate);
+    t += 0.01;
+    neuralNodes.forEach((n, i) => {
+      const s = 0.5 + (i % 3) * 0.3;
+      n.position.x += Math.sin(t * s + i) * 0.005;
+      n.position.y += Math.cos(t * s * 0.7 + i * 0.5) * 0.005;
+      const sc = 1 + Math.sin(t * 2 + i) * 0.2;
+      n.scale.set(sc, sc, sc);
     });
-    introNeuralEdges.forEach((edge, i) => {
-      edge.material.opacity = 0.2 + Math.sin(neuralTime * 1.5 + i * 0.5) * 0.2;
-    });
-    introNeuralScene.rotation.x = Math.sin(neuralTime * 0.1) * 0.1;
-    introNeuralScene.rotation.y = neuralTime * 0.1;
-    introNeuralRenderer.render(introNeuralScene, introNeuralCamera);
+    neuralEdges.forEach((e, i) => { e.material.opacity = 0.2 + Math.sin(t * 1.5 + i * 0.5) * 0.2; });
+    neuralScene.rotation.x = Math.sin(t * 0.1) * 0.1;
+    neuralScene.rotation.y = t * 0.1;
+    neuralRenderer.render(neuralScene, neuralCamera);
   }
-  animateIntroNeural();
+  animate();
 }
-
-// Check when scene 4 becomes active
 const sceneObserver = new MutationObserver(() => {
-  const scene4 = document.querySelector('.intro-scene[data-scene="3"]');
-  if (scene4 && scene4.classList.contains('active')) {
-    setTimeout(initIntroNeural, 300);
-  }
+  const s4 = document.querySelector('.intro-scene[data-scene="3"]');
+  if (s4 && s4.classList.contains('active')) setTimeout(initIntroNeural, 300);
 });
-document.querySelectorAll('.intro-scene').forEach(s => {
-  sceneObserver.observe(s, { attributes: true, attributeFilter: ['class'] });
-});
+document.querySelectorAll('.intro-scene').forEach(s => sceneObserver.observe(s, { attributes: true, attributeFilter: ['class'] }));
 
 // ========================================
 // THEME SWITCHER
 // ========================================
-const themes = {
-  default: { primary: '#06b6d4', secondary: '#0284c7', accent: '#67e8f9' },
-  purple: { primary: '#8b5cf6', secondary: '#7c3aed', accent: '#a78bfa' },
-  green: { primary: '#10b981', secondary: '#059669', accent: '#34d399' },
-  gold: { primary: '#f59e0b', secondary: '#d97706', accent: '#fbbf24' },
-  pink: { primary: '#ec4899', secondary: '#db2777', accent: '#f472b6' }
-};
-
 document.querySelectorAll('.theme-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const theme = btn.dataset.theme;
-    const colors = themes[theme];
-    if (colors) {
-      document.documentElement.style.setProperty('--primary', colors.primary);
-      document.documentElement.style.setProperty('--secondary', colors.secondary);
-      document.documentElement.style.setProperty('--accent', colors.accent);
+    const c = THEMES[btn.dataset.theme];
+    if (c) {
+      document.documentElement.style.setProperty('--primary', c.primary);
+      document.documentElement.style.setProperty('--secondary', c.secondary);
+      document.documentElement.style.setProperty('--accent', c.accent);
+      document.documentElement.style.setProperty('--glow', hexToRgba(c.primary, 0.3));
       document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      localStorage.setItem('theme', theme);
+      localStorage.setItem('theme', btn.dataset.theme);
     }
   });
 });
-
+function hexToRgba(hex, alpha) {
+  const r = parseInt(hex.slice(1,3), 16);
+  const g = parseInt(hex.slice(3,5), 16);
+  const b = parseInt(hex.slice(5,7), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
 const savedTheme = localStorage.getItem('theme');
-if (savedTheme && themes[savedTheme]) {
-  const colors = themes[savedTheme];
-  document.documentElement.style.setProperty('--primary', colors.primary);
-  document.documentElement.style.setProperty('--secondary', colors.secondary);
-  document.documentElement.style.setProperty('--accent', colors.accent);
-  document.querySelectorAll('.theme-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.theme === savedTheme);
-  });
+if (savedTheme && THEMES[savedTheme]) {
+  const c = THEMES[savedTheme];
+  document.documentElement.style.setProperty('--primary', c.primary);
+  document.documentElement.style.setProperty('--secondary', c.secondary);
+  document.documentElement.style.setProperty('--accent', c.accent);
+  document.documentElement.style.setProperty('--glow', hexToRgba(c.primary, 0.3));
+  document.querySelectorAll('.theme-btn').forEach(b => b.classList.toggle('active', b.dataset.theme === savedTheme));
 }
 
 // ========================================
 // CHATBOT
 // ========================================
-const chatbotContainer = document.getElementById('chatbot');
+const chatbot = document.getElementById('chatbot');
 const chatFloat = document.getElementById('chatFloat');
-const chatbotToggle = document.getElementById('chatbotToggle');
-const chatbotClose = document.getElementById('chatbotClose');
 const chatInput = document.getElementById('chatInput');
 const chatSend = document.getElementById('chatSend');
 const chatMessages = document.getElementById('chatMessages');
 
-const botResponses = {
-  'skills': "Sumit has expertise in Python, Java, TensorFlow, Docker, Kubernetes, GCP, React, Node.js! 🚀",
-  'experience': "He worked as Software Engineer Intern at Salesforce and is now Founder of Fintech IT Solutions. 💼",
-  'projects': "He has 13+ projects including Military Security System, Brain Tumor Detection, and CI/CD Pipeline! 🔐",
-  'education': "Sumit has M.Tech in Applied AI & ML from VNIT Nagpur and B.E. in Computer Science. 🎓",
-  'roles': "He works as AI/ML Engineer, DevOps Architect, Data Analyst, Data Scientist, Full Stack, Backend, MLOps! 💪",
-  'contact': "Email: info.sr0909@gmail.com | Phone: +91 9472441137 📧",
+const BOT = {
+  skills: "Sumit's skills include Python, Java, C++, SQL, PyTorch, TensorFlow, LangChain, LangGraph, RAG, Docker, Kubernetes, GCP, FastAPI, React, Node.js 🚀",
+  projects: "Sumit has 7 projects: RAG Clinical QA (92% relevance), LLM Security Log Analyzer (<3% hallucination), CI/CD Pipeline (70% faster), Terraform IaC, Military Vehicle Detection (95% accuracy), Brain Tumor Detection (94.2% accuracy), Mobile Botnet Detection (96.5% precision) 🧠",
+  genai: "Sumit's GenAI work: RAG systems with LangChain + ChromaDB, LLM agents with LangGraph, prompt engineering, hybrid search (BM25 + dense embeddings), and self-reflection loops to reduce hallucination 🧠",
+  education: "M.Tech in Applied AI & ML from VNIT Nagpur (CGPA: 6.53). B.E. in Computer Science from Dr. D.Y. Patil Institute (CGPA: 7.89) 🎓",
+  experience: "Sumit was a Software Engineer Intern at Salesforce (Feb-May 2022). Built Python data pipelines (-40% manual effort), integrated Salesforce APIs (+25% efficiency) 💼",
+  resume: "8 role-specific resumes available! Click the 'Resumes' section to download the one matching your needs 📄",
+  contact: "Email: info.sr0909@gmail.com | Phone: +91 9472441137 | LinkedIn: linkedin.com/in/er-sumit-raj 📧"
 };
-
 function getBotResponse(input) {
-  const lower = input.toLowerCase();
-  if (lower.includes('skill') || lower.includes('language')) return botResponses.skills;
-  if (lower.includes('experience') || lower.includes('work')) return botResponses.experience;
-  if (lower.includes('project')) return botResponses.projects;
-  if (lower.includes('education') || lower.includes('study')) return botResponses.education;
-  if (lower.includes('role') || lower.includes('position')) return botResponses.roles;
-  if (lower.includes('contact') || lower.includes('email')) return botResponses.contact;
-  return "That's a great question! I'm still learning. You can contact Sumit directly for more details. 😊";
+  const l = input.toLowerCase();
+  if (l.includes('skill') || l.includes('tech')) return BOT.skills;
+  if (l.includes('project')) return BOT.projects;
+  if (l.includes('gen') || l.includes('llm') || l.includes('rag')) return BOT.genai;
+  if (l.includes('education') || l.includes('study') || l.includes('college')) return BOT.education;
+  if (l.includes('experience') || l.includes('work') || l.includes('salesforce')) return BOT.experience;
+  if (l.includes('resume') || l.includes('cv')) return BOT.resume;
+  if (l.includes('contact') || l.includes('email')) return BOT.contact;
+  return "Great question! Email Sumit at info.sr0909@gmail.com for more details 😊";
 }
-
-chatFloat.addEventListener('click', () => {
-  chatbotContainer.classList.toggle('open');
-  chatFloat.style.display = 'none';
-});
-
-chatbotToggle.addEventListener('click', () => {
-  chatbotContainer.classList.toggle('open');
-});
-
-chatbotClose.addEventListener('click', () => {
-  chatbotContainer.classList.remove('open');
-  chatFloat.style.display = 'block';
-});
-
+chatFloat.addEventListener('click', () => { chatbot.classList.toggle('open'); chatFloat.style.display = chatbot.classList.contains('open') ? 'none' : 'block'; });
+document.getElementById('chatbotClose').addEventListener('click', () => { chatbot.classList.remove('open'); chatFloat.style.display = 'block'; });
 function sendChat() {
   const text = chatInput.value.trim();
   if (!text) return;
-  const userMsg = document.createElement('div');
-  userMsg.className = 'message user';
-  userMsg.textContent = text;
-  chatMessages.appendChild(userMsg);
+  addMessage('user', text);
   chatInput.value = '';
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-  setTimeout(() => {
-    const botMsg = document.createElement('div');
-    botMsg.className = 'message bot';
-    botMsg.textContent = getBotResponse(text);
-    chatMessages.appendChild(botMsg);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }, 600);
+  setTimeout(() => addMessage('bot', getBotResponse(text)), 500);
 }
-
+function addMessage(type, text) {
+  const msg = document.createElement('div');
+  msg.className = 'message ' + type;
+  msg.textContent = text;
+  chatMessages.appendChild(msg);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 chatSend.addEventListener('click', sendChat);
-chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendChat(); });
+chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendChat(); });
+document.querySelectorAll('.suggestion').forEach(s => {
+  s.addEventListener('click', () => {
+    addMessage('user', s.textContent);
+    setTimeout(() => addMessage('bot', getBotResponse(s.dataset.q)), 500);
+  });
+});
 
 // ========================================
-// TYPED TEXT
+// TYPED
 // ========================================
 function initTyped() {
   const el = document.querySelector('.typed-text');
   if (!el) return;
-  const roles = ['AI/ML Engineer', 'DevOps Architect', 'Data Analyst', 'Data Scientist', 'Full Stack Developer', 'Backend Developer', 'MLOps Engineer'];
-  let idx = 0, char = 0, deleting = false;
+  const roles = Object.values(PROFILE_DATA.roles).map(r => r.title);
+  let i = 0, c = 0, del = false;
   function type() {
-    const current = roles[idx];
-    if (deleting) {
-      el.textContent = current.substring(0, char - 1);
-      char--;
-    } else {
-      el.textContent = current.substring(0, char + 1);
-      char++;
-    }
-    if (!deleting && char === current.length) {
-      deleting = true;
-      setTimeout(type, 2000);
-      return;
-    }
-    if (deleting && char === 0) {
-      deleting = false;
-      idx = (idx + 1) % roles.length;
-      setTimeout(type, 400);
-      return;
-    }
-    setTimeout(type, deleting ? 60 : 90);
+    const cur = roles[i];
+    if (del) { el.textContent = cur.substring(0, c-1); c--; }
+    else { el.textContent = cur.substring(0, c+1); c++; }
+    if (!del && c === cur.length) { del = true; setTimeout(type, 2000); return; }
+    if (del && c === 0) { del = false; i = (i+1) % roles.length; setTimeout(type, 400); return; }
+    setTimeout(type, del ? 50 : 80);
   }
   type();
 }
 
 // ========================================
-// PROJECTS
+// RENDER HERO
 // ========================================
-const projects = {
-  1: { title: "Military Security System", tech: "Python, YOLOv8, OpenCV", desc: "Real-time surveillance with face recognition.", what: "Implemented Haar Cascade (95% accuracy), integrated YOLOv8, configured email alerts." },
-  2: { title: "Brain Tumor Detection", tech: "TensorFlow, Keras, CNN", desc: "CNN-based MRI classification with 92% accuracy.", what: "Built CNN, preprocessed 3,000+ MRI scans, used transfer learning." },
-  3: { title: "Mobile Botnet Detection", tech: "Python, SVM, SQLite", desc: "Android malware detection with 88% accuracy.", what: "Implemented SVM classifier, analyzed network traffic patterns." },
-  4: { title: "CI/CD Pipeline", tech: "GitHub Actions, Docker, GCP", desc: "Automated build and deployment pipeline.", what: "Built GitHub Actions workflow, created multi-stage Dockerfile." },
-  5: { title: "MLOps Pipeline", tech: "MLflow, FastAPI, Docker", desc: "End-to-end MLOps for model deployment.", what: "Implemented MLflow tracking, built FastAPI wrapper." },
-  6: { title: "Real-Time Dashboard", tech: "React, Node.js, Socket.io", desc: "Live analytics dashboard with real-time updates.", what: "Built React frontend, WebSocket connections, MongoDB aggregation." },
-  7: { title: "Kubernetes Deployment", tech: "Kubernetes, Docker, GKE", desc: "Deployed containerized apps on GKE cluster.", what: "Created K8s manifests, implemented HPA, set up load balancing." },
-  8: { title: "Terraform IaC", tech: "Terraform, GCP, HCL", desc: "Automated GCP infrastructure provisioning.", what: "Wrote Terraform configs for VPC/subnets/firewall/instances." },
-  9: { title: "URL Shortener", tech: "Node.js, Express, MongoDB", desc: "High-performance URL shortening with analytics.", what: "Built REST API, implemented click tracking, used Redis." },
-  10: { title: "Fintech IT Solutions", tech: "React, Node.js, AWS", desc: "SaaS platform helping startups launch MVPs.", what: "Built complete platform, integrated Stripe, implemented CI/CD." },
-  11: { title: "NLP Sentiment Analysis", tech: "Python, BERT, FastAPI", desc: "Sentiment analysis using BERT transformer.", what: "Fine-tuned BERT on 50k reviews, achieved 88% accuracy." },
-  12: { title: "ETL Data Pipeline", tech: "Python, Airflow, PostgreSQL", desc: "Automated ETL for large-scale data batches.", what: "Built DAGs in Airflow, extracted from REST APIs." },
-  13: { title: "Customer Support Chatbot", tech: "Python, Rasa, Docker", desc: "AI-powered chatbot for customer support.", what: "Built Rasa NLU pipeline, trained custom intents." }
-};
+function renderHero() {
+  document.getElementById('heroTagline').textContent = PROFILE_DATA.tagline + '. Currently pursuing M.Tech at VNIT Nagpur.';
+  document.getElementById('heroStats').innerHTML = `
+    <div class="stat"><span>7</span><label>Projects</label></div>
+    <div class="stat"><span>300+</span><label>DSA Solved</label></div>
+    <div class="stat"><span>5⭐</span><label>HackerRank</label></div>
+    <div class="stat"><span>8</span><label>Resumes</label></div>
+  `;
+}
 
-function renderProjects() {
-  const container = document.getElementById('projectsGrid');
-  if (!container) return;
-  const icons = ['🔐','🧠','🤖','⚙️','📊','📈','☸️','🏗️','🔗','📈','💬','🔄','🤖'];
-  container.innerHTML = Object.keys(projects).map(id => `
-    <div class="project-card" data-project="${id}">
-      <div class="project-icon">${icons[id-1]}</div>
-      <h3>${projects[id].title}</h3>
-      <p>${projects[id].desc}</p>
-      <div class="project-tags">${projects[id].tech.split(',').slice(0,3).map(t => `<span>${t.trim()}</span>`).join('')}</div>
-      <button class="btn-small view-project">View Details →</button>
+// ========================================
+// RENDER ABOUT
+// ========================================
+function renderAbout() {
+  document.getElementById('aboutGrid').innerHTML = `
+    <div class="about-card"><div class="about-icon"><i class="fas fa-user-graduate"></i></div><h3>Education</h3><p>M.Tech in Applied AI & ML at VNIT Nagpur (2024-2026). B.E. in Computer Science from Dr. D.Y. Patil Institute, Pune (CGPA: 7.89).</p></div>
+    <div class="about-card"><div class="about-icon"><i class="fas fa-briefcase"></i></div><h3>Experience</h3><p>Software Engineer Intern at Salesforce (Feb-May 2022). Built Python data pipelines reducing manual work by 40%, optimized backend workflows, integrated Salesforce APIs.</p></div>
+    <div class="about-card"><div class="about-icon"><i class="fas fa-lightbulb"></i></div><h3>Specialization</h3><p>AI/ML, Generative AI (LLMs, RAG, LangChain), Computer Vision (YOLOv8, ViT), MLOps (Docker, GCP, CI/CD), and Data Engineering.</p></div>
+    <div class="about-card"><div class="about-icon"><i class="fas fa-star"></i></div><h3>Achievements</h3><p>HackerRank 5-Star Java, 4-Star C++, 3-Star Algorithms. 300+ DSA problems solved. Google Cloud & Microsoft certified.</p></div>
+  `;
+}
+
+// ========================================
+// RENDER ROLES
+// ========================================
+function renderRoles() {
+  const grid = document.getElementById('rolesGrid');
+  grid.innerHTML = Object.entries(PROFILE_DATA.roles).map(([k, r]) => `
+    <div class="role-card ${k === currentRole ? 'active' : ''}" data-role="${k}">
+      <div class="role-icon">${r.icon}</div>
+      <h3>${r.title}</h3>
+      <p>${r.summary}</p>
     </div>
   `).join('');
+  grid.querySelectorAll('.role-card').forEach(card => {
+    card.addEventListener('click', () => {
+      currentRole = card.dataset.role;
+      renderRoles();
+      renderSkills();
+      renderProjects();
+    });
+  });
+}
+
+// ========================================
+// RENDER SKILLS (dynamic based on role)
+// ========================================
+const SKILL_CATEGORIES = {
+  "Languages": ["Python", "Java", "C++", "SQL", "JavaScript", "TypeScript", "Bash", "R"],
+  "AI / ML / GenAI": ["PyTorch", "TensorFlow", "Keras", "Scikit-learn", "CNN", "RNN", "LSTM", "Vision Transformers", "Transfer Learning", "LLMs", "RAG", "LangChain", "LangGraph", "Prompt Engineering", "OpenAI API", "Hugging Face", "Transformers", "LoRA Fine-tuning", "Embeddings", "Sentence Transformers", "Hybrid Search", "ChromaDB", "FAISS", "ONNX", "Grad-CAM", "NLP", "MLflow"],
+  "Computer Vision": ["OpenCV", "YOLOv8", "Object Detection", "Image Classification", "Face Detection", "Haar Cascade"],
+  "Data & Analytics": ["Pandas", "NumPy", "EDA", "Statistics", "Probability", "Power BI", "Matplotlib", "Seaborn"],
+  "Backend & APIs": ["FastAPI", "Node.js", "REST APIs", "OOP", "Microservices"],
+  "Databases": ["MySQL", "PostgreSQL", "MongoDB", "SQLite"],
+  "Cloud & DevOps": ["GCP", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "CI/CD", "Cloud Run", "Compute Engine", "IAM", "Linux", "Git"],
+  "Frontend": ["React.js"]
+};
+function renderSkills() {
+  const role = PROFILE_DATA.roles[currentRole];
+  document.getElementById('skillsSubtitle').textContent = `Showing skills for: ${role.title}`;
+  const container = document.getElementById('skillsContainer');
+  container.innerHTML = Object.entries(SKILL_CATEGORIES).map(([cat, skills]) => {
+    const filtered = skills.filter(s => role.skills.includes(s));
+    if (!filtered.length) return '';
+    return `<div class="skills-category"><h3>${cat}</h3><div class="skills-tags">${filtered.map(s => `<span class="skill-tag">${s}</span>`).join('')}</div></div>`;
+  }).join('');
+}
+
+// ========================================
+// PROJECTS
+// ========================================
+const CAT_LABELS = { all: 'All', genai: 'Generative AI', 'ai-ml': 'AI/ML', devops: 'DevOps' };
+function renderFilters() {
+  document.getElementById('projectFilters').innerHTML = Object.entries(CAT_LABELS).map(([k, l]) => `
+    <button class="filter-btn ${k === currentFilter ? 'active' : ''}" data-filter="${k}">${l}</button>
+  `).join('');
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      currentFilter = b.dataset.filter;
+      renderFilters();
+      renderProjects();
+    });
+  });
+}
+function renderProjects() {
+  const role = PROFILE_DATA.roles[currentRole];
+  let list = Object.entries(PROFILE_DATA.projects).map(([id, p]) => ({ id, ...p }));
+  list = list.filter(p => role.projects.includes(parseInt(p.id)));
+  if (currentFilter !== 'all') list = list.filter(p => p.category === currentFilter);
+  if (searchQuery) list = list.filter(p => (p.title + p.desc + p.tech).toLowerCase().includes(searchQuery));
+
+  const grid = document.getElementById('projectsGrid');
+  grid.innerHTML = list.map(p => `
+    <div class="project-card" data-project="${p.id}">
+      <div class="project-icon">${p.icon}</div>
+      <div class="project-category-badge">${CAT_LABELS[p.category] || p.category}</div>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <div class="project-tags">${p.tech.split(',').slice(0,3).map(t => `<span>${t.trim()}</span>`).join('')}</div>
+      <button class="btn-small view-project">View Details →</button>
+    </div>
+  `).join('') || '<p style="text-align:center;color:var(--text-muted);grid-column:1/-1">No projects match this filter for the current role.</p>';
 
   const modal = document.getElementById('projectModal');
   const body = document.getElementById('modal-body');
-  const close = document.querySelector('.modal-close');
-
-  document.querySelectorAll('.view-project').forEach(btn => {
+  grid.querySelectorAll('.view-project').forEach(btn => {
     btn.addEventListener('click', () => {
-      const card = btn.closest('.project-card');
-      const id = card.dataset.project;
-      const p = projects[id];
-      if (p) {
-        body.innerHTML = `
-          <span class="modal-close">&times;</span>
-          <h2 style="color:var(--primary)">${p.title}</h2>
-          <div class="project-tags" style="margin:0.5rem 0">${p.tech.split(',').map(t => `<span>${t.trim()}</span>`).join('')}</div>
-          <p><strong>📋 Description:</strong> ${p.desc}</p>
-          <p><strong>⚙️ How I Made It:</strong> ${p.what}</p>
-          <a href="https://github.com/sumit966" target="_blank" class="btn-small" style="margin-top:1rem">View on GitHub →</a>
-        `;
-        modal.style.display = 'flex';
-        modal.querySelector('.modal-close').addEventListener('click', () => modal.style.display = 'none');
-      }
+      const id = btn.closest('.project-card').dataset.project;
+      const p = PROFILE_DATA.projects[id];
+      body.innerHTML = `
+        <span class="modal-close">&times;</span>
+        <h2 style="color:var(--primary);margin-bottom:0.5rem">${p.title}</h2>
+        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem">${p.year} · ${p.tech}</div>
+        <div class="modal-section"><h4>📋 Overview</h4><p>${p.overview}</p></div>
+        <div class="modal-section"><h4>❗ Problem</h4><p>${p.problem}</p></div>
+        <div class="modal-section"><h4>💡 Solution</h4><p>${p.solution}</p></div>
+        <div class="modal-section"><h4>🏗️ Architecture</h4><p>${p.architecture}</p></div>
+        <div class="modal-section"><h4>✨ Key Features</h4><ul>${p.features.map(f => `<li>${f}</li>`).join('')}</ul></div>
+        <div class="modal-section"><h4>📊 Results</h4><p>${p.results}</p></div>
+        <a href="${p.github}" target="_blank" class="btn-small" style="margin-top:1rem">View on GitHub →</a>
+      `;
+      modal.style.display = 'flex';
+      body.querySelector('.modal-close').addEventListener('click', () => modal.style.display = 'none');
     });
   });
-  window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+  window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
 }
 
 // ========================================
-// GITHUB
+// RENDER EDUCATION
 // ========================================
-async function fetchGitHubRepos() {
-  const container = document.getElementById('github-repos');
-  if (!container) return;
-  try {
-    const res = await fetch('https://api.github.com/users/sumit966/repos?sort=updated&per_page=4');
-    const repos = await res.json();
-    if (repos.message) throw new Error(repos.message);
-    container.innerHTML = repos.map(repo => `
-      <div class="github-repo-card">
-        <h4>${repo.name.replace(/-/g, ' ').toUpperCase()}</h4>
-        <p>${repo.description || 'No description'}</p>
-        <div class="github-stats">
-          <span>⭐ ${repo.stargazers_count}</span>
-          <span>🍴 ${repo.forks_count}</span>
-        </div>
-        <a href="${repo.html_url}" target="_blank" class="btn-small" style="margin-top:0.5rem">View →</a>
+function renderEducation() {
+  document.getElementById('eduGrid').innerHTML = PROFILE_DATA.education.map(e => `
+    <div class="edu-card">
+      <span class="edu-year">${e.year}</span>
+      <h3>${e.degree}</h3>
+      <p>${e.institution} · CGPA: ${e.cgpa}</p>
+      <div class="edu-courses">${e.courses.map(c => `<span>${c}</span>`).join('')}</div>
+    </div>
+  `).join('');
+  document.getElementById('certGrid').innerHTML = PROFILE_DATA.certifications.map(c => `
+    <div class="cert-card"><i class="${c.icon}"></i><span>${c.name}</span></div>
+  `).join('');
+}
+
+// ========================================
+// RENDER EXPERIENCE
+// ========================================
+function renderExperience() {
+  document.getElementById('experienceTimeline').innerHTML = PROFILE_DATA.experience.map(e => `
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>${e.role}</h3>
+        <h4>${e.company}</h4>
+        <span class="timeline-date">${e.duration}</span>
+        <ul>${e.points.map(p => `<li>${p}</li>`).join('')}</ul>
+        <div class="timeline-tags">${e.tech.map(t => `<span>${t}</span>`).join('')}</div>
       </div>
-    `).join('');
-  } catch {
-    container.innerHTML = '<p>Visit <a href="https://github.com/sumit966" target="_blank" style="color:var(--primary)">GitHub</a></p>';
-  }
+    </div>
+  `).join('');
 }
 
 // ========================================
-// MAIN CONTENT INIT
+// RENDER RESUMES
+// ========================================
+function renderResumes() {
+  document.getElementById('resumesGrid').innerHTML = PROFILE_DATA.resumes.map(r => `
+    <div class="resume-card">
+      <div class="resume-icon">${r.icon}</div>
+      <h3>${r.title}</h3>
+      <div class="resume-tags">${r.tags.map(t => `<span>${t}</span>`).join('')}</div>
+      <a href="assets/resumes/${r.file}" class="btn-download" download>📥 Download</a>
+    </div>
+  `).join('');
+}
+
+// ========================================
+// INIT
 // ========================================
 function initMainContent() {
   initTyped();
+  renderHero();
+  renderAbout();
+  renderRoles();
+  renderSkills();
+  renderFilters();
   renderProjects();
-  fetchGitHubRepos();
-  
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.utils.toArray('.about-card, .role-card, .skill-category, .project-card, .resume-card, .timeline-item, .edu-card, .cert-card, .contact-card, .testimonial-card').forEach((el, i) => {
-    gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' },
-      duration: 0.5,
-      y: 30,
-      opacity: 0,
-      delay: i * 0.05,
-      ease: 'power2.out'
-    });
+  renderEducation();
+  renderExperience();
+  renderResumes();
+
+  document.getElementById('projectSearch').addEventListener('input', e => {
+    searchQuery = e.target.value.toLowerCase();
+    renderProjects();
   });
-  
-  gsap.from('.hero-text', { duration: 0.8, y: 50, opacity: 0, ease: 'power3.out' });
-  gsap.from('.hero-3d-box', { duration: 1, scale: 0.5, opacity: 0, delay: 0.3, ease: 'back.out(1.7)' });
-  
-  VanillaTilt.init(document.querySelectorAll('.about-card, .role-card, .skill-category, .project-card, .resume-card, .edu-card, .cert-card, .contact-card, .testimonial-card'), {
-    max: 8,
-    speed: 400,
-    glare: true,
-    'max-glare': 0.15
-  });
-  
-  // Mobile Nav
-  document.querySelector('.nav-toggle')?.addEventListener('click', () => {
-    document.querySelector('.nav-links').classList.toggle('open');
-  });
-  
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.remove('open');
-      document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-    });
-  });
-  
-  window.addEventListener('scroll', () => {
-    let current = '';
-    document.querySelectorAll('section').forEach(section => {
-      const top = section.offsetTop - 200;
-      if (scrollY >= top) current = section.getAttribute('id');
-    });
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
-    });
-  });
-  
-  document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+
+  document.getElementById('contact-form').addEventListener('submit', e => {
     e.preventDefault();
-    alert('✨ Thank you for reaching out! I\'ll respond within 24 hours.');
+    alert('✨ Thank you! I will respond within 24 hours.');
     e.target.reset();
   });
-  
-  document.querySelectorAll('.btn-download').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const names = {
-        'ai-ml': 'AI/ML Engineer',
-        'backend': 'Backend Developer',
-        'data-analyst': 'Data Analyst',
-        'data-scientist': 'Data Scientist',
-        'fullstack': 'Full Stack Developer',
-        'mlops': 'MLOps/DevOps Engineer'
-      };
-      alert(`📄 ${names[btn.dataset.resume] || 'Resume'} will be available soon!\nPlease contact me directly.`);
+
+  document.querySelector('.nav-toggle').addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(l => {
+    l.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      l.classList.add('active');
     });
   });
-}
-
-console.log('🎬 Cinematic Portfolio LOADED!');
-console.log('✨ Working features: Intro, Theme Switcher, Chatbot, Projects, and more!');
-// ========================================
-// ADD GENERATIVE AI PROJECTS
-// ========================================
-
-// Update projects with Generative AI projects
-const genAIProjects = {
-  14: { title: "RAG-Powered Document Q&A System", tech: "LangChain, OpenAI, ChromaDB, Python", desc: "Retrieval-Augmented Generation system for document question-answering using vector databases and LLMs.", what: "Built a RAG pipeline using LangChain with ChromaDB for embeddings, integrated OpenAI GPT-4 for generation, deployed as FastAPI service with Streamlit UI." },
-  15: { title: "Prompt Engineering Playground", tech: "React, FastAPI, OpenAI, Python", desc: "Interactive platform for testing and optimizing prompts for various LLM models with chain-of-thought reasoning.", what: "Built React frontend with real-time prompt testing, FastAPI backend with multiple LLM integrations, implemented few-shot learning and chain-of-thought examples." },
-  16: { title: "AI-Powered Code Assistant", tech: "Python, LangChain, Docker, FastAPI", desc: "Intelligent code assistant that helps with debugging, code generation, and documentation using LLMs.", what: "Built LangChain agent with code-specific tools, integrated with OpenAI API, containerized with Docker, deployed as API service." },
-  17: { title: "Text-to-SQL Generator", tech: "Python, LangChain, PostgreSQL, Streamlit", desc: "Convert natural language questions to SQL queries using LLMs with schema-aware prompting.", what: "Fine-tuned prompts for SQL generation, built Streamlit UI, integrated with PostgreSQL for query execution, implemented error handling." },
-  18: { title: "AI Meeting Summarizer", tech: "Python, Whisper, LangChain, FastAPI", desc: "Transcribe and summarize meeting recordings using Whisper and LLMs with RAG for context.", what: "Integrated Whisper for transcription, built LangChain summarization chain, created FastAPI endpoints, deployed with Docker." }
-};
-
-// Merge with existing projects
-const allProjects = { ...projects, ...genAIProjects };
-
-// Update renderProjects function
-function renderProjects() {
-  const container = document.getElementById('projectsGrid');
-  if (!container) return;
-  const icons = ['🔐','🧠','🤖','⚙️','📊','📈','☸️','🏗️','🔗','📈','💬','🔄','🤖','📚','✍️','💻','🗄️','📝'];
-  const allKeys = Object.keys(allProjects);
-  container.innerHTML = allKeys.map(id => `
-    <div class="project-card" data-project="${id}">
-      <div class="project-icon">${icons[id-1]}</div>
-      <h3>${allProjects[id].title}</h3>
-      <p>${allProjects[id].desc}</p>
-      <div class="project-tags">${allProjects[id].tech.split(',').slice(0,3).map(t => `<span>${t.trim()}</span>`).join('')}</div>
-      <button class="btn-small view-project">View Details →</button>
-    </div>
-  `).join('');
-
-  const modal = document.getElementById('projectModal');
-  const body = document.getElementById('modal-body');
-  const close = document.querySelector('.modal-close');
-
-  document.querySelectorAll('.view-project').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const card = btn.closest('.project-card');
-      const id = card.dataset.project;
-      const p = allProjects[id];
-      if (p) {
-        body.innerHTML = `
-          <span class="modal-close">&times;</span>
-          <h2 style="color:var(--primary)">${p.title}</h2>
-          <div class="project-tags" style="margin:0.5rem 0">${p.tech.split(',').map(t => `<span>${t.trim()}</span>`).join('')}</div>
-          <p><strong>📋 Description:</strong> ${p.desc}</p>
-          <p><strong>⚙️ How I Made It:</strong> ${p.what}</p>
-          <a href="https://github.com/sumit966" target="_blank" class="btn-small" style="margin-top:1rem">View on GitHub →</a>
-        `;
-        modal.style.display = 'flex';
-        modal.querySelector('.modal-close').addEventListener('click', () => modal.style.display = 'none');
-      }
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    document.querySelectorAll('section').forEach(s => { if (scrollY >= s.offsetTop - 200) cur = s.id; });
+    document.querySelectorAll('.nav-links a').forEach(l => {
+      l.classList.remove('active');
+      if (l.getAttribute('href') === '#' + cur) l.classList.add('active');
     });
   });
-  window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+
+  if (typeof gsap !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.about-card, .role-card, .skills-category, .project-card, .resume-card, .timeline-item, .edu-card, .cert-card, .contact-card').forEach((el, i) => {
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' },
+        duration: 0.5, y: 30, opacity: 0, delay: i * 0.03, ease: 'power2.out'
+      });
+    });
+  }
+  if (typeof VanillaTilt !== 'undefined') {
+    VanillaTilt.init(document.querySelectorAll('.about-card, .role-card, .skill-category, .project-card, .resume-card, .edu-card, .cert-card, .contact-card'), {
+      max: 6, speed: 400, glare: true, 'max-glare': 0.1
+    });
+  }
 }
 
-// Override the projects object with allProjects
-Object.assign(projects, genAIProjects);
-
-console.log('🧠 Generative AI Projects Added!');
-console.log('📚 Total Projects:', Object.keys(allProjects).length);
+console.log('🚀 Premium portfolio loaded - Data-driven from resume');
