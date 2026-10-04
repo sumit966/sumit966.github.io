@@ -458,3 +458,27 @@ section, .hero { position: relative; z-index: 2; }
   border-color: #fff !important;
   transform: scale(1.15);
 }
+
+/* ===== WHATSAPP CARD ===== */
+.contact-card.whatsapp-card {
+  border-color: #25D366;
+}
+.contact-card.whatsapp-card i {
+  color: #25D366;
+}
+.btn-whatsapp {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 14px;
+  background: #25D366;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.65rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.btn-whatsapp:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
