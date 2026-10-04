@@ -426,35 +426,3 @@ body, .intro-name, .hero-text h1, .role-icon, .project-icon,
 .resume-icon {
   font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
 }
-
-/* ===== PARTICLE CANVAS ===== */
-#particleCanvas {
-  position: fixed; top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 0; pointer-events: none;
-}
-#mainContent { position: relative; z-index: 1; }
-section, .hero { position: relative; z-index: 2; }
-.nav, .theme-switcher, .chatbot-container, .chat-float, .modal { z-index: 1000; }
-
-/* ===== FONT-AWESOME ICON SPACING ===== */
-.role-icon i,
-.project-icon i,
-.resume-icon i,
-.about-icon i {
-  font-size: 2rem;
-  color: var(--primary);
-}
-.intro-tags-scene span i { margin-right: 5px; }
-.btn i { margin: 0 4px; }
-.skills-category h3 i { margin-right: 8px; color: var(--primary); }
-
-/* ===== THEME BUTTONS AS CIRCLES ===== */
-.theme-btn {
-  border: 2px solid transparent !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-.theme-btn.active {
-  border-color: #fff !important;
-  transform: scale(1.15);
-}
