@@ -1,4 +1,4 @@
-﻿// ========================================
+// ========================================
 // STATE
 // ========================================
 let currentRole = 'ai-ml';
@@ -174,13 +174,13 @@ const chatSend = document.getElementById('chatSend');
 const chatMessages = document.getElementById('chatMessages');
 
 const BOT = {
-  skills: "Sumit's skills include Python, Java, C++, SQL, PyTorch, TensorFlow, LangChain, LangGraph, RAG, Docker, Kubernetes, GCP, FastAPI, React, Node.js 🚀",
-  projects: "Sumit has 7 projects: RAG Clinical QA (92% relevance), LLM Security Log Analyzer (<3% hallucination), CI/CD Pipeline (70% faster), Terraform IaC, Military Vehicle Detection (95% accuracy), Brain Tumor Detection (94.2% accuracy), Mobile Botnet Detection (96.5% precision) 🧠",
-  genai: "Sumit's GenAI work: RAG systems with LangChain + ChromaDB, LLM agents with LangGraph, prompt engineering, hybrid search (BM25 + dense embeddings), and self-reflection loops to reduce hallucination 🧠",
-  education: "M.Tech in Applied AI & ML from VNIT Nagpur (CGPA: 6.53). B.E. in Computer Science from Dr. D.Y. Patil Institute (CGPA: 7.89) 🎓",
-  experience: "Sumit was a Software Engineer Intern at Salesforce (Feb-May 2022). Built Python data pipelines (-40% manual effort), integrated Salesforce APIs (+25% efficiency) 💼",
-  resume: "8 role-specific resumes available! Click the 'Resumes' section to download the one matching your needs 📄",
-  contact: "Email: info.sr0909@gmail.com | Phone: +91 9472441137 | LinkedIn: linkedin.com/in/er-sumit-raj 📧"
+  skills: "Sumit's skills include Python, Java, C++, SQL, PyTorch, TensorFlow, LangChain, LangGraph, RAG, Docker, Kubernetes, GCP, FastAPI, React, Node.js ??",
+  projects: "Sumit has 7 projects: RAG Clinical QA (92% relevance), LLM Security Log Analyzer (<3% hallucination), CI/CD Pipeline (70% faster), Terraform IaC, Military Vehicle Detection (95% accuracy), Brain Tumor Detection (94.2% accuracy), Mobile Botnet Detection (96.5% precision) ??",
+  genai: "Sumit's GenAI work: RAG systems with LangChain + ChromaDB, LLM agents with LangGraph, prompt engineering, hybrid search (BM25 + dense embeddings), and self-reflection loops to reduce hallucination ??",
+  education: "M.Tech in Applied AI & ML from VNIT Nagpur (CGPA: 6.53). B.E. in Computer Science from Dr. D.Y. Patil Institute (CGPA: 7.89) ??",
+  experience: "Sumit was a Software Engineer Intern at Salesforce (Feb-May 2022). Built Python data pipelines (-40% manual effort), integrated Salesforce APIs (+25% efficiency) ??",
+  resume: "8 role-specific resumes available! Click the 'Resumes' section to download the one matching your needs ??",
+  contact: "Email: info.sr0909@gmail.com | Phone: +91 9472441137 | LinkedIn: linkedin.com/in/er-sumit-raj ??"
 };
 function getBotResponse(input) {
   const l = input.toLowerCase();
@@ -191,7 +191,7 @@ function getBotResponse(input) {
   if (l.includes('experience') || l.includes('work') || l.includes('salesforce')) return BOT.experience;
   if (l.includes('resume') || l.includes('cv')) return BOT.resume;
   if (l.includes('contact') || l.includes('email')) return BOT.contact;
-  return "Great question! Email Sumit at info.sr0909@gmail.com for more details 😊";
+  return "Great question! Email Sumit at info.sr0909@gmail.com for more details ??";
 }
 chatFloat.addEventListener('click', () => { chatbot.classList.toggle('open'); chatFloat.style.display = chatbot.classList.contains('open') ? 'none' : 'block'; });
 document.getElementById('chatbotClose').addEventListener('click', () => { chatbot.classList.remove('open'); chatFloat.style.display = 'block'; });
@@ -245,7 +245,7 @@ function renderHero() {
   document.getElementById('heroStats').innerHTML = `
     <div class="stat"><span>7</span><label>Projects</label></div>
     <div class="stat"><span>300+</span><label>DSA Solved</label></div>
-    <div class="stat"><span>5⭐</span><label>HackerRank</label></div>
+    <div class="stat"><span>5?</span><label>HackerRank</label></div>
     <div class="stat"><span>8</span><label>Resumes</label></div>
   `;
 }
@@ -339,7 +339,7 @@ function renderProjects() {
       <h3>${p.title}</h3>
       <p>${p.desc}</p>
       <div class="project-tags">${p.tech.split(',').slice(0,3).map(t => `<span>${t.trim()}</span>`).join('')}</div>
-      <button class="btn-small view-project">View Details →</button>
+      <button class="btn-small view-project">View Details ?</button>
     </div>
   `).join('') || '<p style="text-align:center;color:var(--text-muted);grid-column:1/-1">No projects match this filter for the current role.</p>';
 
@@ -352,14 +352,14 @@ function renderProjects() {
       body.innerHTML = `
         <span class="modal-close">&times;</span>
         <h2 style="color:var(--primary);margin-bottom:0.5rem">${p.title}</h2>
-        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem">${p.year} · ${p.tech}</div>
-        <div class="modal-section"><h4>📋 Overview</h4><p>${p.overview}</p></div>
-        <div class="modal-section"><h4>❗ Problem</h4><p>${p.problem}</p></div>
-        <div class="modal-section"><h4>💡 Solution</h4><p>${p.solution}</p></div>
-        <div class="modal-section"><h4>🏗️ Architecture</h4><p>${p.architecture}</p></div>
-        <div class="modal-section"><h4>✨ Key Features</h4><ul>${p.features.map(f => `<li>${f}</li>`).join('')}</ul></div>
-        <div class="modal-section"><h4>📊 Results</h4><p>${p.results}</p></div>
-        <a href="${p.github}" target="_blank" class="btn-small" style="margin-top:1rem">View on GitHub →</a>
+        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem">${p.year} � ${p.tech}</div>
+        <div class="modal-section"><h4>?? Overview</h4><p>${p.overview}</p></div>
+        <div class="modal-section"><h4>? Problem</h4><p>${p.problem}</p></div>
+        <div class="modal-section"><h4>?? Solution</h4><p>${p.solution}</p></div>
+        <div class="modal-section"><h4>??? Architecture</h4><p>${p.architecture}</p></div>
+        <div class="modal-section"><h4>? Key Features</h4><ul>${p.features.map(f => `<li>${f}</li>`).join('')}</ul></div>
+        <div class="modal-section"><h4>?? Results</h4><p>${p.results}</p></div>
+        <a href="${p.github}" target="_blank" class="btn-small" style="margin-top:1rem">View on GitHub ?</a>
       `;
       modal.style.display = 'flex';
       body.querySelector('.modal-close').addEventListener('click', () => modal.style.display = 'none');
@@ -376,7 +376,7 @@ function renderEducation() {
     <div class="edu-card">
       <span class="edu-year">${e.year}</span>
       <h3>${e.degree}</h3>
-      <p>${e.institution} · CGPA: ${e.cgpa}</p>
+      <p>${e.institution} � CGPA: ${e.cgpa}</p>
       <div class="edu-courses">${e.courses.map(c => `<span>${c}</span>`).join('')}</div>
     </div>
   `).join('');
@@ -412,7 +412,7 @@ function renderResumes() {
       <div class="resume-icon">${r.icon}</div>
       <h3>${r.title}</h3>
       <div class="resume-tags">${r.tags.map(t => `<span>${t}</span>`).join('')}</div>
-      <a href="assets/resumes/${r.file}" class="btn-download" download>📥 Download</a>
+      <a href="assets/resumes/${r.file}" class="btn-download" download>?? Download</a>
     </div>
   `).join('');
 }
@@ -439,7 +439,7 @@ function initMainContent() {
 
   document.getElementById('contact-form').addEventListener('submit', e => {
     e.preventDefault();
-    alert('✨ Thank you! I will respond within 24 hours.');
+    alert('? Thank you! I will respond within 24 hours.');
     e.target.reset();
   });
 
@@ -478,4 +478,4 @@ function initMainContent() {
   }
 }
 
-console.log('🚀 Premium portfolio loaded - Data-driven from resume');
+console.log('?? Premium portfolio loaded - Data-driven from resume');
