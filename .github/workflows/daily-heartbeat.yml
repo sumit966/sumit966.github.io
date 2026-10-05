@@ -1,0 +1,32 @@
+﻿name: Daily Heartbeat
+
+on:
+  schedule:
+    - cron: '0 10 * * *'   # 10:00 AM UTC = 3:30 PM IST
+  workflow_dispatch:        # manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update heartbeat log
+        run: |
+          echo "Last heartbeat: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > heartbeat.txt
+
+      - name: Commit and push
+        run: |
+          git config user.name "sumit966"
+          git config user.email "info.sr0909@gmail.com"
+          git add heartbeat.txt
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: daily heartbeat [skip ci]"
+            git push
+          fi

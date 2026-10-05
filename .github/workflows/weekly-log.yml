@@ -1,0 +1,36 @@
+﻿name: Weekly Activity Log
+
+on:
+  schedule:
+    - cron: '0 14 * * 0'   # Every Sunday at 2:00 PM UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  weekly-log:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Append weekly log
+        run: |
+          mkdir -p activity
+          echo "## Week of $(date -u +'%Y-%m-%d')" >> activity/weekly-log.md
+          echo "" >> activity/weekly-log.md
+          echo "- Shipped code, learned concepts, and improved systems." >> activity/weekly-log.md
+          echo "" >> activity/weekly-log.md
+
+      - name: Commit and push
+        run: |
+          git config user.name "sumit966"
+          git config user.email "info.sr0909@gmail.com"
+          git add activity/weekly-log.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "docs: weekly activity log [skip ci]"
+            git push
+          fi

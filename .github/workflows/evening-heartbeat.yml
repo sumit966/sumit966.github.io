@@ -1,0 +1,32 @@
+﻿name: Evening Heartbeat
+
+on:
+  schedule:
+    - cron: '0 22 * * *'   # 10:00 PM UTC = 3:30 AM IST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update evening heartbeat
+        run: |
+          echo "Evening heartbeat: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > heartbeat-evening.txt
+
+      - name: Commit and push
+        run: |
+          git config user.name "sumit966"
+          git config user.email "info.sr0909@gmail.com"
+          git add heartbeat-evening.txt
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: evening heartbeat [skip ci]"
+            git push
+          fi
