@@ -1,0 +1,27 @@
+﻿name: Morning Heartbeat
+on:
+  schedule:
+    - cron: '0 6 * * *'   # 6 AM UTC = 11:30 AM IST
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update morning heartbeat
+        run: |
+          echo "Morning: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > heartbeat-morning.txt
+      - name: Commit and push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "sumit966"
+          git config user.email "sr5446363@gmail.com"
+          git add heartbeat-morning.txt
+          if git diff --staged --quiet; then exit 0; fi
+          git commit --author="Sumit Raj <sr5446363@gmail.com>" -m "chore: morning heartbeat [skip ci]"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
