@@ -1,4 +1,4 @@
-﻿name: Weekly Activity Log
+name: Weekly Activity Log
 
 on:
   schedule:
@@ -26,7 +26,7 @@ jobs:
       - name: Commit and push
         run: |
           git config user.name "sumit966"
-          git config user.email "info.sr0909@gmail.com"
+          git config user.email "sr5446363@gmail.com"
           git add activity/weekly-log.md
           if git diff --staged --quiet; then
             echo "No changes to commit"

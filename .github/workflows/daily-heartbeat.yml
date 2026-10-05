@@ -1,4 +1,4 @@
-﻿name: Daily Heartbeat
+name: Daily Heartbeat
 
 on:
   schedule:
@@ -22,7 +22,7 @@ jobs:
       - name: Commit and push
         run: |
           git config user.name "sumit966"
-          git config user.email "info.sr0909@gmail.com"
+          git config user.email "sr5446363@gmail.com"
           git add heartbeat.txt
           if git diff --staged --quiet; then
             echo "No changes to commit"
