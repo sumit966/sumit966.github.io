@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sumit Raj | AI/ML · GenAI · Data · Full Stack · Software Engineer</title>
+<meta name="description" content="Sumit Raj - Portfolio with role-specific views: AI/ML Engineer, Generative AI Engineer, Data Analyst, Full Stack Developer, Software Engineer."/>
+<meta property="og:title" content="Sumit Raj | Multi-Role Portfolio"/>
+<meta property="og:description" content="Explore my profile as AI/ML, GenAI, Data Analyst, Full Stack, or Software Engineer."/>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/prototypes.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+<div class="cursor-glow"></div>
+
+<!-- Theme Switcher -->
+<div class="theme-switcher">
+  <button class="theme-btn active" data-theme="blue"   title="Blue"   style="background:#3b82f6"></button>
+  <button class="theme-btn"        data-theme="cyan"   title="Cyan"   style="background:#06b6d4"></button>
+  <button class="theme-btn"        data-theme="purple" title="Purple" style="background:#8b5cf6"></button>
+  <button class="theme-btn"        data-theme="green"  title="Green"  style="background:#10b981"></button>
+  <button class="theme-btn"        data-theme="orange" title="Orange" style="background:#f97316"></button>
+  <button class="theme-btn"        data-theme="pink"   title="Pink"   style="background:#ec4899"></button>
+  <button class="theme-btn"        data-theme="red"    title="Red"    style="background:#ef4444"></button>
+</div>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">Sumit<span>Raj</span></a>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#roles">Roles</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div>
+        <div class="hero-badge">🚀 Multi-Role Portfolio · 5 Specializations</div>
+        <h1 class="hero-title">Hi, I'm<br><span>Sumit Raj</span></h1>
+        <p class="hero-desc">
+          AI/ML · Generative AI · Data Analytics · Full Stack · Software Engineer.
+          Pick the role below that matches your hiring needs — each one shows
+          <strong>only the skills, projects, and resume</strong> relevant to that role.
+        </p>
+        <div class="hero-stats" id="heroStats"></div>
+        <div class="hero-buttons">
+          <a href="#roles" class="btn btn-primary">Explore Roles <i class="fas fa-arrow-down"></i></a>
+          <a href="https://github.com/sumit966" target="_blank" class="btn btn-outline">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+        <div class="hero-social">
+          <a href="https://github.com/sumit966" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/er-sumit-raj-/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:info.sr0909@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="prototype-box" style="height: 320px;">
+          <div class="prototype-label">🎛️ Multi-Role Command Center</div>
+          <div class="proto-agents" style="padding-top: 60px;">
+            <div class="agent">🤖</div>
+            <div class="agent">🧠</div>
+            <div class="agent">📊</div>
+            <div class="agent">💻</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Roles Grid -->
+<section id="roles">
+  <div class="container">
+    <h2 class="section-title">Explore My Profile <span>By Role</span></h2>
+    <p class="section-subtitle">Click any role to see dedicated skills, projects, prototypes, and resume</p>
+    <div class="role-grid" id="roleGrid"></div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About <span>Me</span></h2>
+    <div style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--text-muted); line-height: 1.8;">
+      <p>M.Tech in Applied AI & ML from VNIT Nagpur. Ex-Software Engineer Intern at Salesforce. Built 15+ projects spanning computer vision, LLM applications, data pipelines, full-stack web apps, and backend services.</p>
+      <p style="margin-top: 1rem;">HackerRank 5-Star Java · 4-Star C++ · 3-Star Algorithms · 300+ DSA problems solved. Google Cloud & Microsoft certified.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Let's <span>Connect</span></h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <h4>Email</h4>
+        <a href="mailto:info.sr0909@gmail.com">info.sr0909@gmail.com</a>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-phone"></i>
+        <h4>Phone</h4>
+        <p>+91 9472441137</p>
+      </div>
+      <div class="contact-card">
+        <i class="fab fa-github"></i>
+        <h4>GitHub</h4>
+        <a href="https://github.com/sumit966" target="_blank">github.com/sumit966</a>
+      </div>
+      <div class="contact-card">
+        <i class="fab fa-linkedin"></i>
+        <h4>LinkedIn</h4>
+        <a href="https://www.linkedin.com/in/er-sumit-raj-/" target="_blank">er-sumit-raj-</a>
+      </div>
+          <div class="contact-card whatsapp-card">
+        <i class="fab fa-whatsapp"></i>
+        <h4>WhatsApp</h4>
+        <a href="https://wa.me/919472441137" target="_blank">+91 9472441137</a>
+      </div></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Sumit Raj · Multi-Role Portfolio</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/data/profile.js"></script>
+<script src="js/prototypes.js"></script>
+<script src="js/main.js"></script>
+<a href="https://wa.me/919472441137" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a></body>
+</html>
+

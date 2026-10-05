@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 </head>
 <body>
-<!-- ===== CINEMATIC INTRO (7 scenes, ~17s) ===== -->
+<!-- ===== CINEMATIC INTRO ===== -->
 <div id="introOverlay">
   <div class="intro-container">
 
@@ -30,11 +30,10 @@
         <div class="intro-term-body">
           <div class="intro-term-line" style="--d:0.3s">> Initializing system...</div>
           <div class="intro-term-line" style="--d:0.9s">> Loading modules: AI, ML, GenAI, Data</div>
-          <div class="intro-term-line" style="--d:1.5s">> Connecting to cloud services</div>
-          <div class="intro-term-line blink" style="--d:2.1s">> Ready<span class="cursor">_</span></div>
+          <div class="intro-term-line" style="--d:1.6s">> Connecting to cloud services</div>
+          <div class="intro-term-line blink" style="--d:2.3s">> Ready<span class="cursor">_</span></div>
         </div>
       </div>
-      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
     </div>
 
     <!-- Scene 2: Code Rain -->
@@ -45,17 +44,15 @@
         <br>&nbsp;&nbsp;<span>def</span> <span class="fn">build</span>(self):
         <br>&nbsp;&nbsp;&nbsp;&nbsp;<span>return</span> <span class="str">"production-ready"</span>
       </div>
-      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
     </div>
 
     <!-- Scene 3: Neural Network -->
     <div class="intro-scene" data-scene="2">
       <canvas id="introNeuralCanvas"></canvas>
       <div class="intro-neural-text">Neural Network Active</div>
-      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
     </div>
 
-    <!-- Scene 4: Role Cards -->
+    <!-- Scene 4: Role Cards Fly In -->
     <div class="intro-scene" data-scene="3">
       <div class="intro-roles">
         <div class="intro-role-card" style="--i:0"><i class="fas fa-robot"></i><span>AI/ML</span></div>
@@ -65,163 +62,10 @@
         <div class="intro-role-card" style="--i:4"><i class="fas fa-cogs"></i><span>Software</span></div>
       </div>
       <div class="intro-roles-text">5 Specializations · 15+ Projects</div>
-      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
     </div>
 
-    <!-- Scene 5 (NEW): Data Pipeline Flow -->
+    <!-- Scene 5: Final Reveal -->
     <div class="intro-scene" data-scene="4">
-      <div class="intro-pipeline">
-        <div class="pipe-node" style="--i:0"><i class="fas fa-file-alt"></i><span>Ingest</span></div>
-        <div class="pipe-arrow"></div>
-        <div class="pipe-node" style="--i:1"><i class="fas fa-filter"></i><span>Clean</span></div>
-        <div class="pipe-arrow"></div>
-        <div class="pipe-node" style="--i:2"><i class="fas fa-brain"></i><span>Model</span></div>
-        <div class="pipe-arrow"></div>
-        <div class="pipe-node" style="--i:3"><i class="fas fa-chart-line"></i><span>Serve</span></div>
-      </div>
-      <div class="intro-pipeline-text">End-to-End Pipelines · MLflow · Docker · GCP</div>
-      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
-    </div>
-
-    <!-- Scene 6 (NEW): Live Stats Counting -->
-    <div class="intro-scene" data-scene="5">
-      <div class="intro-stats-title">By the Numbers</div>
-      <div class="intro-stats">
-        <div class="intro-stat">
-          <div class="stat-value" data-target="15">0</div>
-          <div class="stat-label">Projects</div>
-        </div>
-        <div class="intro-stat">
-          <div class="stat-value" data-target="300" data-suffix="+">0</div>
-          <div class="stat-label">DSA Solved</div>
-        </div>
-        <div class="intro-stat">
-          <div class="stat-value" data-target="5" data-suffix="★">0</div>
-          <div class="stat-label">HackerRank</div>
-        </div>
-        <div class="intro-stat">
-          <div class="stat-value" data-target="10">0</div>
-          <div class="stat-label">Certifications</div>
-        </div>
-      </div>
-      <div class="intro-stats-note">Built with Python · Java · React · Docker · GCP</div>
-      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
-    </div>
-
-        <!-- Scene 7 (NEW): Holographic Grid -->
-    <div class="intro-scene" data-scene="6">
-      <canvas id="introGridCanvas"></canvas>
-      <div class="intro-grid-text">Holographic Data Grid</div>
-      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
-    </div>
-
-    <!-- Scene 8 (NEW): AI Typing Assistant -->
-    <div class="intro-scene" data-scene="7">
-      <div class="intro-chat-demo">
-        <div class="chat-demo-header">
-          <i class="fas fa-robot"></i>
-          <span>AI Assistant</span>
-          <span class="chat-status">● Online</span>
-        </div>
-        <div class="chat-demo-body">
-          <div class="chat-msg user">Build me a RAG pipeline with hybrid search</div>
-          <div class="chat-msg bot typing-dots"><span></span><span></span><span></span></div>
-          <div class="chat-msg bot final-msg">
-            <i class="fas fa-check-circle"></i>
-            Pipeline deployed. <strong>92% answer relevance</strong> achieved.
-            <div class="chat-metrics">
-              <span>⚡ 480ms latency</span>
-              <span>📊 18% boost</span>
-              <span>✅ Tests passing</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="intro-chat-text">Production-Ready LLM Systems</div>
-      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
-    </div>
-
-    <!-- Scene 9 (NEW): Orbital Tech Icons -->
-    <div class="intro-scene" data-scene="8">
-      <div class="intro-orbit">
-        <div class="orbit-center">
-          <i class="fas fa-code"></i>
-        </div>
-        <div class="orbit-ring ring-1">
-          <div class="orbit-icon" style="--angle:0deg"><i class="fab fa-python"></i></div>
-          <div class="orbit-icon" style="--angle:90deg"><i class="fab fa-java"></i></div>
-          <div class="orbit-icon" style="--angle:180deg"><i class="fab fa-docker"></i></div>
-          <div class="orbit-icon" style="--angle:270deg"><i class="fab fa-react"></i></div>
-        </div>
-        <div class="orbit-ring ring-2">
-          <div class="orbit-icon" style="--angle:45deg"><i class="fas fa-brain"></i></div>
-          <div class="orbit-icon" style="--angle:135deg"><i class="fab fa-node-js"></i></div>
-          <div class="orbit-icon" style="--angle:225deg"><i class="fas fa-database"></i></div>
-          <div class="orbit-icon" style="--angle:315deg"><i class="fas fa-cloud"></i></div>
-        </div>
-      </div>
-      <div class="intro-orbit-text">Python · Java · Docker · React · Node · GCP · TensorFlow</div>
-      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
-    </div>
-
-        <!-- Scene 7 (NEW): Holographic Grid -->
-    <div class="intro-scene" data-scene="6">
-      <canvas id="introGridCanvas"></canvas>
-      <div class="intro-grid-text">Holographic Data Grid</div>
-      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
-    </div>
-
-    <!-- Scene 8 (NEW): AI Typing Assistant -->
-    <div class="intro-scene" data-scene="7">
-      <div class="intro-chat-demo">
-        <div class="chat-demo-header">
-          <i class="fas fa-robot"></i>
-          <span>AI Assistant</span>
-          <span class="chat-status">● Online</span>
-        </div>
-        <div class="chat-demo-body">
-          <div class="chat-msg user">Build me a RAG pipeline with hybrid search</div>
-          <div class="chat-msg bot typing-dots"><span></span><span></span><span></span></div>
-          <div class="chat-msg bot final-msg">
-            <i class="fas fa-check-circle"></i>
-            Pipeline deployed. <strong>92% answer relevance</strong> achieved.
-            <div class="chat-metrics">
-              <span>⚡ 480ms latency</span>
-              <span>📊 18% boost</span>
-              <span>✅ Tests passing</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="intro-chat-text">Production-Ready LLM Systems</div>
-      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
-    </div>
-
-    <!-- Scene 9 (NEW): Orbital Tech Icons -->
-    <div class="intro-scene" data-scene="8">
-      <div class="intro-orbit">
-        <div class="orbit-center">
-          <i class="fas fa-code"></i>
-        </div>
-        <div class="orbit-ring ring-1">
-          <div class="orbit-icon" style="--angle:0deg"><i class="fab fa-python"></i></div>
-          <div class="orbit-icon" style="--angle:90deg"><i class="fab fa-java"></i></div>
-          <div class="orbit-icon" style="--angle:180deg"><i class="fab fa-docker"></i></div>
-          <div class="orbit-icon" style="--angle:270deg"><i class="fab fa-react"></i></div>
-        </div>
-        <div class="orbit-ring ring-2">
-          <div class="orbit-icon" style="--angle:45deg"><i class="fas fa-brain"></i></div>
-          <div class="orbit-icon" style="--angle:135deg"><i class="fab fa-node-js"></i></div>
-          <div class="orbit-icon" style="--angle:225deg"><i class="fas fa-database"></i></div>
-          <div class="orbit-icon" style="--angle:315deg"><i class="fas fa-cloud"></i></div>
-        </div>
-      </div>
-      <div class="intro-orbit-text">Python · Java · Docker · React · Node · GCP · TensorFlow</div>
-      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
-    </div>
-
-    <!-- Scene 7: Final Reveal -->
-    <div class="intro-scene" data-scene="6">
       <div class="intro-final">
         <div class="intro-hi">Hi, I'm</div>
         <h1 class="intro-name">Sumit <span>Raj</span></h1>
@@ -234,27 +78,22 @@
         </div>
         <button class="intro-enter">Enter Portfolio <i class="fas fa-arrow-right"></i></button>
       </div>
-      <div class="intro-progress"><div class="intro-progress-bar"></div></div>
     </div>
 
     <!-- Progress dots -->
-            <div class="intro-dots">
+    <div class="intro-dots">
       <span class="intro-dot active" data-i="0"></span>
       <span class="intro-dot" data-i="1"></span>
       <span class="intro-dot" data-i="2"></span>
       <span class="intro-dot" data-i="3"></span>
       <span class="intro-dot" data-i="4"></span>
-      <span class="intro-dot" data-i="5"></span>
-      <span class="intro-dot" data-i="6"></span>
-      <span class="intro-dot" data-i="7"></span>
-      <span class="intro-dot" data-i="8"></span>
-      <span class="intro-dot" data-i="9"></span>
     </div>
 
     <button class="intro-skip">Skip Intro <i class="fas fa-forward"></i></button>
 
   </div>
 </div>
+
 <canvas id="particleCanvas"></canvas>
 <div class="cursor-glow"></div>
 
@@ -392,9 +231,6 @@
   <i class="fab fa-whatsapp"></i>
 </a></body>
 </html>
-
-
-
 
 
 
