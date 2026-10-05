@@ -1,32 +1,30 @@
-name: Daily Heartbeat
-
+﻿name: Daily Heartbeat
 on:
   schedule:
-    - cron: '0 10 * * *'   # 10:00 AM UTC = 3:30 PM IST
-  workflow_dispatch:        # manual trigger from GitHub UI
-
+    - cron: '0 10 * * *'
+  workflow_dispatch:
 permissions:
   contents: write
-
 jobs:
   heartbeat:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Update heartbeat log
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update heartbeat
         run: |
-          echo "Last heartbeat: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > heartbeat.txt
-
+          echo "Last: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > heartbeat.txt
       - name: Commit and push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "sumit966"
           git config user.email "sr5446363@gmail.com"
           git add heartbeat.txt
           if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore: daily heartbeat [skip ci]"
-            git push
+            echo "No changes"
+            exit 0
           fi
+          git commit --author="Sumit Raj <sr5446363@gmail.com>" -m "chore: daily heartbeat [skip ci]"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
