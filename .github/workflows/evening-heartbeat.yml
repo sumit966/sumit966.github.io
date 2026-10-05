@@ -12,19 +12,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Update evening heartbeat
-        run: |
-          echo "Evening: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > heartbeat-evening.txt
-      - name: Commit if changes exist
+      - run: echo "Evening: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > heartbeat-evening.txt
+      - name: Commit if changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "sumit966"
           git config user.email "sr5446363@gmail.com"
           git add heartbeat-evening.txt
-          if git diff --cached --quiet; then
-            echo "No changes to commit - skipping"
-            exit 0
-          fi
+          if git diff --cached --quiet; then exit 0; fi
           git commit --author="Sumit Raj <sr5446363@gmail.com>" -m "chore: evening heartbeat [skip ci]"
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:main

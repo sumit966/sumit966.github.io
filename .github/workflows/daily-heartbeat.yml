@@ -12,7 +12,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo "Last: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > heartbeat.txt
+      - name: Update heartbeat
+        run: echo "Last: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" > heartbeat.txt
       - name: Commit if changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
