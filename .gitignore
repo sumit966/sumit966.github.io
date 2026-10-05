@@ -1,0 +1,10 @@
+
+# Backup files
+*_backup*.html
+*_backup*.js
+*_backup*.css
+index_old*.html
+css/style_old*.css
+css/style_backup*.css
+js/*_backup*.js
+js/*_old*.js
