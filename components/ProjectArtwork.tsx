@@ -11,8 +11,7 @@ export default function ProjectArtwork({
 }) {
   return (
     <div className="art" style={{ "--accent": accent } as React.CSSProperties} aria-hidden>
-      <svg viewBox="0 0 320 180" role="img">
-        <title>{title} artwork</title>
+      <svg viewBox="0 0 320 180" role="img" aria-label={`${title} artwork`}>
         <defs>
           <linearGradient id={`g-${kind}`} x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor={accent} stopOpacity="0.9" />
